@@ -37,7 +37,12 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # def cancel
   #   super
   # end
-
+  def create
+    # サインアップのフラグを残しておく
+    session[:previous_action] = "sign_up"
+    super
+  end
+  
    protected
 
     # サインアップ時に追加のパラメータを許可
