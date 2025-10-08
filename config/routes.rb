@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   # 管理者用 namespace
   namespace :admin do
-    root to: "homes#top" # 管理者トップページ
+    get '/' => 'homes#top', as: :root # 管理者トップページ
 
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]

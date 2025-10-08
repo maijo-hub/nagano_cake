@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     case resource
     when Admin
-      admin_path
+      admin_root_path
     when Customer
       if session[:previous_action] == "sign_up"
         session[:previous_action] = nil # 一度使ったら消す
