@@ -11,6 +11,12 @@
   </head>
 
   <body>
+    <% if controller_path.start_with?('admin/') %>
+      <%= render 'layouts/admin_header' %>
+    <% elsif controller_path.start_with?('public/') || controller_path == 'homes' %>
+      <%= render 'layouts/public_header' %>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>

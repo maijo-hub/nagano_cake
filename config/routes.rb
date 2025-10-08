@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # 管理者用 Devise
-  devise_for :admin, skip: [:registrations, :passwords], controllers: {
+  devise_for :admins, path: 'admin', skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
 
