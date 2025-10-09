@@ -19,9 +19,9 @@ class ApplicationController < ActionController::Base
   # ログアウト後の遷移先
   def after_sign_out_path_for(resource_or_scope)
     case resource_or_scope
-    when :admins
+    when :admin
       new_admin_session_path # 管理者ログイン画面へ
-    when :customers
+    when :customer
       items_path # 顧客は商品一覧へ
     else
       root_path
