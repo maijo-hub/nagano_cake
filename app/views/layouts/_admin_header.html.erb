@@ -1,17 +1,22 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<header class="navbar navbar-expand-lg shadow-sm" style="background-color: #fff8fa;">
   <div class="container">
-    <%= link_to "管理者ページ", admin_root_path, class: "navbar-brand" %>
 
-    <ul class="navbar-nav ml-auto">
+    <!-- 🌟 ロゴ部分 -->
+    <%= link_to admin_root_path, class: "navbar-brand fw-bold", style: "color: #ff8da1;" do %>
+      <i class="fa-solid fa-cake-candles me-2" style="color: #ff8da1;"></i>
+      Nagano Cake 管理
+    <% end %>
+
+    <nav class="ms-auto">
       <% if admin_signed_in? %>
-        <li class="nav-item">
-          <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link", data: { turbolinks: false } %>
-        </li>
+        <%= link_to "商品一覧", admin_items_path, class: "nav-link d-inline-block text-dark mx-2" %>
+        <%= link_to "会員一覧", admin_customers_path, class: "nav-link d-inline-block text-dark mx-2" %>
+        <%= link_to "注文履歴一覧", admin_orders_path, class: "nav-link d-inline-block text-dark mx-2" %>
+        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link d-inline-block text-dark mx-2" %>
       <% else %>
-        <li class="nav-item">
-          <%= link_to "ログイン", new_admin_session_path, class: "nav-link" %>
-        </li>
+        <%= link_to "商品一覧", items_path, class: "nav-link d-inline-block text-dark mx-2" %>
+        <%= link_to "ログイン", new_admin_session_path, class: "nav-link d-inline-block text-dark mx-2" %>
       <% end %>
-    </ul>
+    </nav>
   </div>
-</nav>
+</header>

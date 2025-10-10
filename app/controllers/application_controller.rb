@@ -7,9 +7,9 @@ class ApplicationController < ActionController::Base
     when Customer
       if session[:previous_action] == "sign_up"
         session[:previous_action] = nil # 一度使ったら消す
-        customers_mypage_path
+        mypage_customers_path
       else
-        items_path # 顧客は商品一覧へ
+        items_path # ログイン後も新着商品一覧へ
       end
     else
       root_path
@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
     when :admin
       new_admin_session_path # 管理者ログイン画面へ
     when :customer
-      items_path # 顧客は商品一覧へ
+      items_path # ログアウト後は新着商品一覧へ
     else
       root_path
     end

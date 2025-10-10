@@ -6,17 +6,22 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/18b80b8bde.js" crossorigin="anonymous"></script>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <% if controller_path.start_with?('admin/') %>
+    <!-- 顧客がログインしているとき -->
       <%= render 'layouts/admin_header' %>
-    <% elsif controller_path.start_with?('public/') || controller_path == 'homes' %>
+
+    <% else %>
+      <!-- 顧客がログインしていないとき（トップやAboutなど） -->
       <%= render 'layouts/public_header' %>
     <% end %>
 
     <%= yield %>
   </body>
+
 </html>

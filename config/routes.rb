@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     root to: "homes#top"
     get "about" => "homes#about"
 
-    resources :items, only: [:index, :show]
+    resources :items, only: [:index, :show]  # ← 新着商品一覧ページ
     resources :genres, only: [:index, :show]  # ジャンル別商品一覧
 
     resource :customers, only: [:edit, :update] do
