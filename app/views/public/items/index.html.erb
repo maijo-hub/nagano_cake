@@ -1,0 +1,10 @@
+<!-- app/views/public/items/index.html.erb -->
+<h1>新着商品一覧</h1>
+
+<% @items.each do |item| %>
+  <div class="item-card">
+    <h3><%= item.name %></h3>
+    <p><%= item.introduction %></p>
+    <p>価格: <%= item.price %>円</p>
+  </div>
+<% end %>
