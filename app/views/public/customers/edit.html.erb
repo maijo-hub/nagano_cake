@@ -1,7 +1,7 @@
 <div class="container mt-4">
   <h2>登録情報編集</h2>
 
-  <%= form_with model: @customer, url: information_customers_path, local: true do |f| %>
+  <%= form_with model: @customer, url: information_path, local: true do |f| %>
     <div class="form-group">
       <%= f.label :last_name, "姓" %>
       <%= f.text_field :last_name, class: "form-control" %>
@@ -10,6 +10,16 @@
       <%= f.label :first_name, "名" %>
       <%= f.text_field :first_name, class: "form-control" %>
     </div>
+    <div class="form-group">
+      <%= f.label :last_name_kana, "姓（カナ）" %>
+      <%= f.text_field :last_name_kana, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :first_name_kana, "名（カナ）" %>
+      <%= f.text_field :first_name_kana, class: "form-control" %>
+    </div>
+
     <div class="form-group">
       <%= f.label :postal_code, "郵便番号" %>
       <%= f.text_field :postal_code, class: "form-control" %>
