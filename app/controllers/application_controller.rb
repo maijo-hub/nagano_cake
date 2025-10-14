@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
     when :admin
       new_admin_session_path # 管理者ログイン画面へ
     when :customer
-      items_path # ログアウト後は新着商品一覧へ
+      root_path # ← トップページに変更！    
     else
       root_path
     end
