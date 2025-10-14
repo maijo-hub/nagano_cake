@@ -23,31 +23,39 @@ Rails.application.routes.draw do
 
   # 顧客用 Public namespace
   scope module: :public do
+    # トップページ・アバウト
     root to: "homes#top"
-    get "about" => "homes#about"
+    get "about", to: "homes#about"
 
-    resources :items, only: [:index, :show]  # ← 新着商品一覧ページ
-    resources :genres, only: [:index, :show]  # ジャンル別商品一覧
+    # 商品関連
+    resources :items, only: [:index, :show]        # 新着商品一覧・商品詳細
+    resources :genres, only: [:index, :show]       # ジャンル別商品一覧
 
-    resource :customers, only: [:edit, :update] do
-      get "mypage" => "customers#show"
-      get "check" => "customers#check"
-      patch "withdrow" => "customers#withdrow"
-    end
+    # 顧客関連
+    get 'customers/mypage', to: 'customers#show', as: 'mypage_customers'       # マイページ
+    get 'customers/check', to: 'customers#check', as: 'check_customers'       # 退会確認
+    patch 'customers/withdrow', to: 'customers#withdrow', as: 'withdrow_customers' # 退会処理
 
+    # 登録情報編集・更新
+    get 'customers/information/edit', to: 'customers#edit', as: 'information_edit'
+    patch 'customers/information', to: 'customers#update', as: 'information'
+
+    # カート
     resources :cart_items, only: [:index, :create, :update, :destroy] do
       collection do
-        delete "destroy_all"
+        delete 'destroy_all'  # カート内全削除
       end
     end
 
+    # 注文
     resources :orders, only: [:new, :create, :index, :show] do
       collection do
-        post "check"
-        get "finish"
+        post 'check'          # 注文確認
+        get 'finish'          # 注文完了
       end
     end
 
+    # 配送先
     resources :shipping_addresses, only: [:index, :new, :create, :edit, :update, :destroy]
   end
 end
