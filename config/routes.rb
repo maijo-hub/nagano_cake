@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
-    resources :orders, only: [:update]            # 注文ステータス更新
+    resources :orders, only: [:index, :show, :update]            # 注文ステータス更新
     resources :order_details, only: [:show, :update] # 製作ステータス更新
   end
 
