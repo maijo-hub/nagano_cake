@@ -1,12 +1,14 @@
 class Admin::ItemsController < ApplicationController
-  before_action :authenticate_admin!  # 管理者認証（Devise使用前提）
+  before_action :authenticate_admin!
+  before_action :set_item, only: [:show, :edit, :update]
 
   def index
-    @items = Item.all.order(created_at: :desc)
+    @items = Item.order(created_at: :desc).page(params[:page]).per(10)
   end
+  
 
   def new
-    @item = Item.new
+    @item = Item.new(is_active: true) # デフォルト：販売中
   end
 
   def create
@@ -18,16 +20,11 @@ class Admin::ItemsController < ApplicationController
     end
   end
 
-  def show
-    @item = Item.find(params[:id])
-  end
+  def show; end
 
-  def edit
-    @item = Item.find(params[:id])
-  end
+  def edit; end
 
   def update
-    @item = Item.find(params[:id])
     if @item.update(item_params)
       redirect_to admin_item_path(@item), notice: "商品情報を更新しました。"
     else
@@ -37,7 +34,11 @@ class Admin::ItemsController < ApplicationController
 
   private
 
+  def set_item
+    @item = Item.find(params[:id])
+  end
+
   def item_params
-    params.require(:item).permit(:name, :introduction, :price, :image)
+    params.require(:item).permit(:name, :introduction, :price, :image, :is_active)
   end
 end

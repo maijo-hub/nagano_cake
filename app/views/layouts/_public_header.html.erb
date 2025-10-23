@@ -1,47 +1,103 @@
 <!-- app/views/layouts/_public_header.html.erb -->
-<header class="navbar navbar-light bg-pink shadow-sm">
+<header class="navbar navbar-expand-lg shadow-sm" style="background-color: #fff0f5;">
   <div class="container">
-    <!-- 🍰 ロゴ -->
-    <%= link_to root_path, class: "navbar-brand fw-bold", style: "color: #ffb6c1;" do %>
-      <i class="fa-solid fa-cake-candles me-2" style="color: #ffb6c1;"></i>
-      Nagano Cake
+
+    <!-- 🍰 ロゴ部分 -->
+    <%= link_to root_path, class: "navbar-brand fw-bold d-flex align-items-center", style: "color: #ff85c0;" do %>
+      <i class="fa-solid fa-cake-candles me-2" style="font-size: 1.5rem;"></i>
+      <span> Nagano Cake 🍰</span>
     <% end %>
 
-    <nav class="ms-auto">
-      <ul class="navbar-nav">
+    <!-- ハンバーガー（モバイル対応） -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#publicNavbar" aria-controls="publicNavbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-        <% if customer_signed_in? %>
-          <!-- ✅ ログイン後 -->
-          <li class="nav-item">
-            <%= link_to "マイページ", mypage_customers_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "商品一覧", items_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "カート", cart_items_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "nav-link", data: { confirm: "ログアウトしますか？" } %>
-          </li>
+    <div class="collapse navbar-collapse" id="publicNavbar">
+      <nav class="ms-auto d-flex align-items-center">
+        <ul class="navbar-nav d-flex flex-row gap-2">
 
-        <% else %>
-          <!-- ✅ ログイン前 -->
-          <li class="nav-item">
-            <%= link_to "About", about_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "商品一覧", items_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "新規登録", new_customer_registration_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "ログイン", new_customer_session_path, class: "nav-link" %>
-          </li>
-        <% end %>
+          <% if customer_signed_in? %>
+            <li class="nav-item">
+              <%= link_to mypage_customers_path, class: "nav-link btn btn-pastel d-flex align-items-center" do %>
+                <i class="fa-solid fa-user me-1"></i> マイページ
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to items_path, class: "nav-link btn btn-pastel d-flex align-items-center" do %>
+                <i class="fa-solid fa-bag-shopping me-1"></i> 商品一覧
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to cart_items_path, class: "nav-link btn btn-pastel d-flex align-items-center" do %>
+                <i class="fa-solid fa-cart-shopping me-1"></i> カート
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to destroy_customer_session_path, method: :delete, data: { confirm: "ログアウトしますか？" }, class: "nav-link btn btn-danger d-flex align-items-center" do %>
+                <i class="fa-solid fa-right-from-bracket me-1"></i> ログアウト
+              <% end %>
+            </li>
 
-      </ul>
-    </nav>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to about_path, class: "nav-link btn btn-pastel d-flex align-items-center" do %>
+                <i class="fa-solid fa-circle-info me-1"></i> About
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to items_path, class: "nav-link btn btn-pastel d-flex align-items-center" do %>
+                <i class="fa-solid fa-bag-shopping me-1"></i> 商品一覧
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to new_customer_registration_path, class: "nav-link btn btn-pastel d-flex align-items-center" do %>
+                <i class="fa-solid fa-user-plus me-1"></i> 新規登録
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to new_customer_session_path, class: "nav-link btn btn-pastel d-flex align-items-center" do %>
+                <i class="fa-solid fa-right-to-bracket me-1"></i> ログイン
+              <% end %>
+            </li>
+          <% end %>
+
+        </ul>
+      </nav>
+    </div>
   </div>
 </header>
+
+<style>
+  /* パステルボタン */
+  .btn-pastel {
+    background-color: #ffd6e8; /* 薄ピンク */
+    color: #6b2a5c;
+    border-radius: 50px;
+    padding: 0.4rem 0.8rem;
+    font-weight: 500;
+    transition: 0.2s;
+  }
+
+  .btn-pastel:hover {
+    background-color: #ffb3d2;
+    color: white;
+  }
+
+  .btn-danger {
+    border-radius: 50px;
+    padding: 0.4rem 0.8rem;
+    font-weight: 500;
+  }
+
+  /* ナビリンク間の余白 */
+  .navbar-nav .nav-item {
+    margin-left: 0.3rem;
+    margin-right: 0.3rem;
+  }
+
+  /* ハンバーガーアイコンの色 */
+  .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,133,192,0.9)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+  }
+</style>

@@ -1,22 +1,50 @@
-<header class="navbar navbar-expand-lg shadow-sm" style="background-color: #fff8fa;">
+<header class="navbar navbar-expand-lg shadow-sm" style="background-color: #fff0f5;">
   <div class="container">
 
     <!-- 🌟 ロゴ部分 -->
-    <%= link_to admin_root_path, class: "navbar-brand fw-bold d-flex align-items-center", style: "color: #ff8da1;" do %>
-      <i class="fa-solid fa-cake-candles me-2" style="color: #ff8da1; font-size: 1.4rem;"></i>
-      <span> 🍰NaganoCake Admin🍰</span>
+    <%= link_to admin_root_path, class: "navbar-brand fw-bold d-flex align-items-center", style: "color: #ff85c0;" do %>
+      <i class="fa-solid fa-cake-candles me-2" style="font-size: 1.6rem;"></i>
+      <span> NaganoCake Admin 🍰</span>
     <% end %>
 
-    <nav class="ms-auto">
-      <% if admin_signed_in? %>
-        <%= link_to "商品一覧", admin_items_path, class: "nav-link d-inline-block text-dark mx-2" %>
-        <%= link_to "会員一覧", admin_customers_path, class: "nav-link d-inline-block text-dark mx-2" %>
-        <%= link_to "注文履歴一覧", admin_orders_path, class: "nav-link d-inline-block text-dark mx-2" %>
-        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link d-inline-block text-dark mx-2" %>
-      <% else %>
-        <%= link_to "商品一覧", items_path, class: "nav-link d-inline-block text-dark mx-2" %>
-        <%= link_to "ログイン", new_admin_session_path, class: "nav-link d-inline-block text-dark mx-2" %>
-      <% end %>
-    </nav>
+    <!-- ハンバーガー用ボタン（モバイル用） -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#adminNavbar" aria-controls="adminNavbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="adminNavbar">
+      <nav class="ms-auto d-flex align-items-center">
+        <% if admin_signed_in? %>
+          <%= link_to admin_items_path, class: "nav-link btn btn-pastel mx-1 d-flex align-items-center" do %>
+            <i class="fa-solid fa-bag-shopping me-1"></i> 商品一覧
+          <% end %>
+
+          <%= link_to admin_customers_path, class: "nav-link btn btn-pastel mx-1 d-flex align-items-center" do %>
+            <i class="fa-solid fa-user me-1"></i> 会員一覧
+          <% end %>
+
+          <%= link_to admin_orders_path, class: "nav-link btn btn-pastel mx-1 d-flex align-items-center" do %>
+            <i class="fa-solid fa-clipboard-list me-1"></i> 注文履歴一覧
+          <% end %>
+
+          <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link btn btn-danger mx-1 d-flex align-items-center" do %>
+            <i class="fa-solid fa-right-from-bracket me-1"></i> ログアウト
+          <% end %>
+        <% else %>
+          <%= link_to items_path, class: "nav-link btn btn-pastel mx-1 d-flex align-items-center" do %>
+            <i class="fa-solid fa-bag-shopping me-1"></i> 商品一覧
+          <% end %>
+
+          <%= link_to new_admin_session_path, class: "nav-link btn btn-pastel mx-1 d-flex align-items-center" do %>
+            <i class="fa-solid fa-right-to-bracket me-1"></i> ログイン
+          <% end %>
+        <% end %>
+      </nav>
+    </div>
   </div>
 </header>
+
+<style>
+  /* パステルカラーのボタン */
+  .btn-pastel {
+    background-color: #ffd6e
