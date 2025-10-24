@@ -1,0 +1,49 @@
+<div class="container mt-4">
+  <h2 class="text-pink fw-bold mb-4">
+    <i class="fa-solid fa-receipt me-2"></i>注文履歴詳細
+  </h2>
+
+  <!-- 注文情報 -->
+  <div class="card shadow-sm mb-4 border-0 rounded-3">
+    <div class="card-body">
+      <p><strong>購入者：</strong> <%= @order.customer.last_name %> <%= @order.customer.first_name %></p>
+      <p><strong>注文日：</strong> <%= l(@order.created_at, format: :short) %></p>
+      <p><strong>配送先：</strong> <%= @order.address %></p>
+      <p><strong>支払方法：</strong> <%= @order.payment_method_i18n %></p>
+    </div>
+  </div>
+
+  <!-- 商品明細 -->
+  <div class="card shadow-sm border-0 rounded-3">
+    <div class="card-body">
+      <table class="table table-hover align-middle text-center mb-0">
+        <thead style="background-color: #ffe6f0;">
+          <tr>
+            <th>商品名</th>
+            <th>単価（税込）</th>
+            <th>数量</th>
+            <th>小計</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @order_details.each do |detail| %>
+            <tr>
+              <td><%= detail.item.name %></td>
+              <td><%= number_to_currency(detail.price, unit: "¥", precision: 0) %></td>
+              <td><%= detail.amount %></td>
+              <td><%= number_to_currency(detail.price * detail.amount, unit: "¥", precision: 0) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <div class="mt-4 text-end">
+        <p><strong>商品合計：</strong> <%= number_to_currency(@order.total_payment - @order.postage, unit: "¥", precision: 0) %></p>
+        <p><strong>送料：</strong> <%= number_to_currency(@order.postage, unit: "¥", precision: 0) %></p>
+        <p class="fs-5 fw-bold text-pink">請求金額合計：
+          <%= number_to_currency(@order.total_payment, unit: "¥", precision: 0) %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

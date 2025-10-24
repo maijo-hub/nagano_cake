@@ -72,3 +72,68 @@ a {
 .navbar-toggler-icon {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,133,192,0.9)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
+
+/* テーブルの丸角 & 影 */
+table {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+thead th {
+  font-weight: 600;
+  color: #6b2a5c;
+}
+
+tbody td {
+  color: #4a2a48;
+  vertical-align: middle;
+}
+
+tbody tr:hover {
+  background-color: #ffe0f2;
+}
+
+/* 見出しピンク */
+h2.text-pink {
+  color: #ff85c0;
+}
+
+/* ページネーションボタン */
+.pagination .page-link {
+  background-color: #ffd6e8;
+  color: #6b2a5c;
+  border-radius: 50px;
+  margin: 0 2px;
+}
+
+.pagination .page-link:hover {
+  background-color: #ffb3d2;
+  color: #fff;
+}
+
+/* FontAwesomeアイコン色 */
+i.fa-solid {
+  color: #ff85c0;
+}
+
+h2.text-pink {
+  color: #ff85c0;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 15px;
+}
+
+table th {
+  color: #6b2a5c;
+  font-weight: 600;
+}
+
+table td {
+  color: #4a2a48;
+}
+
+table tr:hover {
+  background-color: #fff0f8;
+}

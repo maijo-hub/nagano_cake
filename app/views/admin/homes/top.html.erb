@@ -1,4 +1,38 @@
 <div class="container mt-4">
-  <h2>管理者トップページ</h2>
-  <p>ここに注文履歴一覧を表示予定です。</p>
+  <h2 class="mb-4 text-pink fw-bold">
+    <i class="fa-solid fa-clipboard-list me-2"></i>
+    注文履歴一覧
+  </h2>
+
+  <table class="table table-hover align-middle shadow-sm rounded" style="background-color: #fff0f5;">
+    <thead style="background-color: #ffd6e8;" class="text-center">
+      <tr>
+        <th><i class="fa-solid fa-calendar-check me-1"></i>購入日時</th>
+        <th><i class="fa-solid fa-user me-1"></i>購入者</th>
+        <th><i class="fa-solid fa-boxes-stacked me-1"></i>注文個数</th>
+      </tr>
+    </thead>
+
+    <tbody class="text-center">
+      <% @orders.each do |order| %>
+       <tr>
+        <!-- 🔗 注文日時をクリックで詳細へ遷移 -->
+        <td>
+          <%= link_to order.created_at.strftime("%Y-%m-%d %H:%M"),
+                      admin_order_detail_path(order.id),
+                      class: "text-decoration-none fw-bold",
+                      style: "color: #ff85c0;" %>
+        </td>
+
+        <td><%= order.customer.name %></td>
+        <td><%= order.order_items.sum(:amount) %></td>
+       </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <div class="d-flex justify-content-center mt-4">
+    <%= paginate @orders %>
+  </div>
 </div>
+
