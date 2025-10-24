@@ -1,1 +1,74 @@
-@use '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";
+
+/* -------------------------
+   ヘッダー高さの変数
+   admin / public 共通で調整
+-------------------------- */
+$header-height: 70px;  // デフォルトヘッダー高さ
+$header-height-lg: 80px; // 大きい画面用に微調整
+
+body {
+  background-color: #fff5f8;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* ヘッダー共通 */
+header.navbar {
+  position: relative;  // 固定でない場合
+  z-index: 1000;
+  height: $header-height;
+  @media (min-width: 992px) {
+    height: $header-height-lg;  // デスクトップは少し高く
+  }
+}
+
+/* メインコンテンツの余白をヘッダー高さに自動追従 */
+main.container {
+  margin-top: $header-height;
+  @media (min-width: 992px) {
+    margin-top: $header-height-lg;
+  }
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+/* aタグホバーアニメーション */
+a {
+  transition: 0.2s;
+  &:hover {
+    text-decoration: none;
+    color: #ff85c0;
+  }
+}
+
+/* ボタン */
+.btn-pastel {
+  background-color: #ffd6e8; /* 薄ピンク */
+  color: #6b2a5c;
+  border-radius: 50px;
+  padding: 0.4rem 0.8rem;
+  font-weight: 500;
+  transition: 0.2s;
+
+  &:hover {
+    background-color: #ffb3d2;
+    color: #fff;
+  }
+}
+
+.btn-danger {
+  border-radius: 50px;
+  padding: 0.4rem 0.8rem;
+  font-weight: 500;
+}
+
+/* ナビリンク間の余白 */
+.navbar-nav .nav-item {
+  margin-left: 0.3rem;
+  margin-right: 0.3rem;
+}
+
+/* ハンバーガーアイコン色 */
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,133,192,0.9)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}

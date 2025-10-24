@@ -13,41 +13,6 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-    <style>
-      /* 全体背景とフォント */
-      body {
-        background-color: #fff5f8; /* パステルピンク系のふんわり背景 */
-        font-family: 'Helvetica Neue', Arial, sans-serif;
-      }
-
-      /* ヘッダーを relative にして z-index を調整 */
-      header.navbar {
-        position: relative; 
-        z-index: 1; 
-      }
-
-      /* メインにヘッダー分の余白を追加 */
-      main.container {
-        margin-top: 80px; /* ヘッダーの高さに合わせる */
-      }
-
-      /* aタグのホバーアニメーション */
-      a {
-        transition: 0.2s;
-      }
-
-      a:hover {
-        text-decoration: none;
-        color: #ff85c0;
-      }
-
-      /* コンテナの上下 padding */
-      .container {
-        padding-top: 1.5rem;
-        padding-bottom: 1.5rem;
-      }
-    </style>
-
   </head>
 
   <body>
