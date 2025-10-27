@@ -39,3 +39,51 @@ body {
   background-color: #ffb3d2;
   color: white;
 }
+
+  /* 全体の柔らかい背景 */
+  body {
+    background-color: #fff8fb;
+  }
+
+  /* 商品カード */
+  .pastel-card {
+    background-color: #fff;
+    border: 2px solid #ffe6f2;
+  }
+
+  /* ピンク文字 */
+  .text-pink {
+    color: #d26ba3;
+  }
+
+  /* セレクトボックス */
+  .pastel-select {
+    border-radius: 20px;
+    border: 2px solid #ffd6e8;
+    background-color: #fffafc;
+  }
+
+  .pastel-select:focus {
+    border-color: #ffb3d2;
+    box-shadow: 0 0 0 0.25rem rgba(255, 179, 210, 0.3);
+  }
+
+  /* カートボタン */
+  .btn-pastel-green {
+    background-color: #c2f0c2;
+    color: #357a38;
+    border-radius: 50px;
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    transition: 0.3s;
+  }
+
+  .btn-pastel-green:hover {
+    background-color: #9de69d;
+    color: #fff;
+  }
+
+  /* 画像 */
+  .pastel-img {
+    border: 4px solid #ffe6f2;
+  }
