@@ -1,8 +1,12 @@
 class Public::ItemsController < ApplicationController
   def index
-    # 新着順で商品を表示
-    @items = Item.order(created_at: :desc)
+    if params[:search].present?
+      @items = Item.where("name LIKE ?", "%#{params[:search]}%").page(params[:page]).per(9)
+    else
+      @items = Item.page(params[:page]).per(9)
+    end
   end
+  
 
   def show
     @item = Item.find(params[:id])

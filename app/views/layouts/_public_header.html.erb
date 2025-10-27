@@ -1,103 +1,69 @@
-<!-- app/views/layouts/_public_header.html.erb -->
 <header class="navbar navbar-expand-lg shadow-sm" style="background-color: #fff0f5;">
   <div class="container">
-
     <!-- 🍰 ロゴ部分 -->
     <%= link_to root_path, class: "navbar-brand fw-bold d-flex align-items-center", style: "color: #ff85c0;" do %>
       <i class="fa-solid fa-cake-candles me-2" style="font-size: 1.5rem;"></i>
       <span> Nagano Cake 🍰</span>
     <% end %>
 
-    <!-- ハンバーガー（モバイル対応） -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#publicNavbar" aria-controls="publicNavbar" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#publicNavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="publicNavbar">
-      <nav class="ms-auto d-flex align-items-center">
-        <ul class="navbar-nav d-flex flex-row gap-2">
-
-          <% if customer_signed_in? %>
-            <li class="nav-item">
-              <%= link_to mypage_customers_path, class: "nav-link btn btn-pastel d-flex align-items-center" do %>
-                <i class="fa-solid fa-user me-1"></i> マイページ
-              <% end %>
-            </li>
-            <li class="nav-item">
-              <%= link_to items_path, class: "nav-link btn btn-pastel d-flex align-items-center" do %>
-                <i class="fa-solid fa-bag-shopping me-1"></i> 商品一覧
-              <% end %>
-            </li>
-            <li class="nav-item">
-              <%= link_to cart_items_path, class: "nav-link btn btn-pastel d-flex align-items-center" do %>
-                <i class="fa-solid fa-cart-shopping me-1"></i> カート
-              <% end %>
-            </li>
-            <li class="nav-item">
-              <%= link_to destroy_customer_session_path, method: :delete, data: { confirm: "ログアウトしますか？" }, class: "nav-link btn btn-danger d-flex align-items-center" do %>
-                <i class="fa-solid fa-right-from-bracket me-1"></i> ログアウト
-              <% end %>
-            </li>
-
-          <% else %>
-            <li class="nav-item">
-              <%= link_to about_path, class: "nav-link btn btn-pastel d-flex align-items-center" do %>
-                <i class="fa-solid fa-circle-info me-1"></i> About
-              <% end %>
-            </li>
-            <li class="nav-item">
-              <%= link_to items_path, class: "nav-link btn btn-pastel d-flex align-items-center" do %>
-                <i class="fa-solid fa-bag-shopping me-1"></i> 商品一覧
-              <% end %>
-            </li>
-            <li class="nav-item">
-              <%= link_to new_customer_registration_path, class: "nav-link btn btn-pastel d-flex align-items-center" do %>
-                <i class="fa-solid fa-user-plus me-1"></i> 新規登録
-              <% end %>
-            </li>
-            <li class="nav-item">
-              <%= link_to new_customer_session_path, class: "nav-link btn btn-pastel d-flex align-items-center" do %>
-                <i class="fa-solid fa-right-to-bracket me-1"></i> ログイン
-              <% end %>
-            </li>
+      <nav class="ms-auto d-flex align-items-center gap-2 flex-wrap">
+        <% if customer_signed_in? %>
+          <%= link_to mypage_customers_path, class: "nav-link btn btn-pastel d-flex align-items-center" do %>
+            <i class="fa-solid fa-user me-1"></i> マイページ
           <% end %>
+          <%= link_to items_path, class: "nav-link btn btn-pastel d-flex align-items-center" do %>
+            <i class="fa-solid fa-bag-shopping me-1"></i> 商品一覧
+          <% end %>
+          <%= link_to cart_items_path, class: "nav-link btn btn-pastel d-flex align-items-center" do %>
+            <i class="fa-solid fa-cart-shopping me-1"></i> カート
+          <% end %>
+          <%= link_to destroy_customer_session_path, method: :delete, data: { confirm: "ログアウトしますか？" }, class: "nav-link btn btn-danger d-flex align-items-center" do %>
+            <i class="fa-solid fa-right-from-bracket me-1"></i> ログアウト
+          <% end %>
+        <% else %>
+          <%= link_to about_path, class: "nav-link btn btn-pastel d-flex align-items-center" do %>
+            <i class="fa-solid fa-circle-info me-1"></i> About
+          <% end %>
+          <%= link_to new_customer_registration_path, class: "nav-link btn btn-pastel d-flex align-items-center" do %>
+            <i class="fa-solid fa-user-plus me-1"></i> 新規登録
+          <% end %>
+          <%= link_to new_customer_session_path, class: "nav-link btn btn-pastel d-flex align-items-center" do %>
+            <i class="fa-solid fa-right-to-bracket me-1"></i> ログイン
+          <% end %>
+        <% end %>
 
-        </ul>
+        <!-- 🔍 検索フォーム -->
+        <div class="search-box ms-3">
+          <%= form_with url: items_path, method: :get, local: true do |f| %>
+            <div class="input-group">
+              <%= f.text_field :search, placeholder: "商品検索", class: "form-control rounded-pill" %>
+              <button class="btn btn-pink rounded-pill ms-1">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
+            </div>
+          <% end %>
+        </div>
       </nav>
     </div>
   </div>
 </header>
 
 <style>
-  /* パステルボタン */
-  .btn-pastel {
-    background-color: #ffd6e8; /* 薄ピンク */
-    color: #6b2a5c;
-    border-radius: 50px;
-    padding: 0.4rem 0.8rem;
-    font-weight: 500;
-    transition: 0.2s;
+  .btn-pink {
+    background-color: #ffb6d9;
+    color: #fff;
+    border: none;
   }
-
-  .btn-pastel:hover {
-    background-color: #ffb3d2;
-    color: white;
+  .btn-pink:hover {
+    background-color: #ff91c1;
   }
-
-  .btn-danger {
-    border-radius: 50px;
-    padding: 0.4rem 0.8rem;
-    font-weight: 500;
-  }
-
-  /* ナビリンク間の余白 */
-  .navbar-nav .nav-item {
-    margin-left: 0.3rem;
-    margin-right: 0.3rem;
-  }
-
-  /* ハンバーガーアイコンの色 */
-  .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,133,192,0.9)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+  .search-box .form-control {
+    border: 1px solid #ffd6e8;
+    width: 180px;
   }
 </style>

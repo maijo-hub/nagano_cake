@@ -1,10 +1,30 @@
-<!-- app/views/public/items/index.html.erb -->
-<h1>新着商品一覧</h1>
+<div class="container py-5">
+  <h2 class="text-center text-pink fw-bold mb-4">
+    <i class="fa-solid fa-cookie-bite me-2"></i>
+    商品一覧（全 <%= @items.count %> 件）
+  </h2>
 
-<% @items.each do |item| %>
-  <div class="item-card">
-    <h3><%= item.name %></h3>
-    <p><%= item.introduction %></p>
-    <p>価格: <%= item.price %>円</p>
+  <div class="row g-4">
+    <% @items.each do |item| %>
+      <div class="col-md-4 col-sm-6">
+        <div class="card product-card shadow-sm h-100">
+          <%= link_to item_path(item), class: "text-decoration-none" do %>
+            <% if item.image.attached? %>
+              <%= image_tag item.image.variant(resize: "300x200"), class: "card-img-top rounded-top" %>
+            <% else %>
+              <%= image_tag "no_image.jpg", class: "card-img-top rounded-top" %>
+            <% end %>
+            <div class="card-body text-center">
+              <h5 class="fw-bold text-dark mb-1"><%= item.name %></h5>
+              <p class="text-muted mb-0">¥<%= item.price.to_s(:delimited) %></p>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
   </div>
-<% end %>
+
+  <div class="d-flex justify-content-center mt-4">
+    <%= paginate @items %>
+  </div>
+</div>
