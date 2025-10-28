@@ -1,2 +1,44 @@
-<h1>Admin::Customers#index</h1>
-<p>Find me in app/views/admin/customers/index.html.erb</p>
+<div class="container mt-5">
+  <h2 class="text-center mb-4 text-pink fw-bold">
+    <i class="fa-solid fa-users me-2"></i> 会員一覧
+  </h2>
+
+  <div class="card shadow-sm p-3 pastel-card">
+    <table class="table table-hover align-middle text-center mb-0">
+      <thead class="table-pink">
+        <tr>
+          <th>会員ID</th>
+          <th>氏名</th>
+          <th>メールアドレス</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @customers.each do |customer| %>
+          <tr>
+            <td><%= customer.id %></td>
+            <td>
+              <%= link_to admin_customer_path(customer), class: "text-decoration-none text-dark fw-semibold" do %>
+                <i class="fa-solid fa-user me-1"></i>
+                <%= customer.last_name %> <%= customer.first_name %>
+              <% end %>
+            </td>
+            <td><%= customer.email %></td>
+            <td>
+              <% if customer.is_active? %>
+                <span class="badge bg-success rounded-pill px-3 py-2">
+                  <i class="fa-solid fa-circle-check me-1"></i> 有効
+                </span>
+              <% else %>
+                <span class="badge bg-secondary rounded-pill px-3 py-2">
+                  <i class="fa-solid fa-circle-xmark me-1"></i> 退会
+                </span>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+

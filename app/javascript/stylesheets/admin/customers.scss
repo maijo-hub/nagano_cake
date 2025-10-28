@@ -1,0 +1,38 @@
+/* =======================
+   会員一覧ページデザイン
+   ======================= */
+
+/* テーブル */
+.table {
+  background-color: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* 見出しピンク */
+.text-pink {
+  color: #ff85c0;
+}
+
+/* テーブルヘッダー */
+.table-pink {
+  background-color: #ffe4ef;
+  color: #6b2a5c;
+}
+
+/* 行ホバー時 */
+.table-hover tbody tr:hover {
+  background-color: #fff0f7;
+  transition: 0.2s ease-in-out;
+}
+
+/* カード風 */
+.pastel-card {
+  background-color: #fff9fb;
+  border-radius: 16px;
+}
+
+/* バッジ（ステータス） */
+.badge {
+  font-size: 0.85rem;
+}
