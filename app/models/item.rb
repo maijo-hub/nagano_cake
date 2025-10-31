@@ -1,6 +1,7 @@
 class Item < ApplicationRecord
   # 商品画像（Active Storage）
   has_one_attached :image
+  has_many :cart_items, dependent: :destroy
 
   # バリデーション
   validates :name, :introduction, :price, presence: true

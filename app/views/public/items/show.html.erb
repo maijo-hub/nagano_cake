@@ -22,12 +22,12 @@
       </p>
 
       <div class="mt-3">
-        <%= form_with model: [@item, @cart_item || CartItem.new], url: cart_items_path, method: :post, local: true do |f| %>
+        <%= form_with model: @cart_item, url: cart_items_path, method: :post, local: true do |f| %>
           <div class="d-flex align-items-center flex-wrap">
             <%= f.label :amount, "個数選択", class: "me-2 fw-semibold" %>
-            <%= f.select :amount, options_for_select((1..10).map { |n| [n, n] }), {}, class: "form-select pastel-select me-3 mb-2" %>
+            <%= f.select :amount, (1..10), {}, class: "form-select pastel-select me-3 mb-2" %>
             <%= f.hidden_field :item_id, value: @item.id %>
-            <%= f.submit "カートに入れる", class: "btn btn-pastel-green shadow-sm mb-2" %>
+            <%= f.submit "🍰 カートに入れる", class: "btn btn-pastel-green shadow-sm mb-2" %>
           </div>
         <% end %>
       </div>
