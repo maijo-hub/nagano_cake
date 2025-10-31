@@ -89,6 +89,8 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    enum_help (0.0.20)
+      activesupport (>= 3.0.0)
     erubi (1.13.1)
     ffi (1.17.2)
     ffi (1.17.2-arm64-darwin)
@@ -277,6 +279,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.4)
   capybara (>= 3.26)
   devise
+  enum_help
   jbuilder (~> 2.7)
   kaminari
   listen (~> 3.3)
