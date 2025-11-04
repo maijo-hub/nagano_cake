@@ -1,0 +1,50 @@
+<h2 class="fw-bold my-4">注文情報入力</h2>
+
+<%= form_with model: @order, url: check_orders_path, method: :post, local: true do |f| %>
+
+  <!-- 支払方法 -->
+  <div class="mb-4">
+    <h4 class="fw-semibold">支払方法</h4>
+    <%= f.radio_button :payment_method, :credit_card, checked: true %>
+    <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %><br>
+
+    <%= f.radio_button :payment_method, :transfer %>
+    <%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer] %>
+  </div>
+
+  <!-- お届け先 -->
+  <div class="mb-4">
+    <h4 class="fw-semibold">お届け先</h4>
+
+    <!-- 登録住所に送る -->
+    <%= f.radio_button :address_option, "customer", checked: true %>
+    <%= f.label :address_option_customer, "ご自身の住所" %><br>
+    <div class="ms-4">
+      〒<%= current_customer.postal_code %>
+      <%= current_customer.address %><br>
+      <%= current_customer.last_name %> <%= current_customer.first_name %>
+    </div>
+
+    <hr>
+
+    <!-- 新しい住所を入力 -->
+    <%= f.radio_button :address_option, "new" %>
+    <%= f.label :address_option_new, "新しいお届け先" %><br>
+
+    <div class="ms-4">
+      <%= f.label :postal_code, "郵便番号(ハイフンなし)" %>
+      <%= f.text_field :postal_code, class: "form-control mb-2" %>
+
+      <%= f.label :address, "住所" %>
+      <%= f.text_field :address, class: "form-control mb-2" %>
+
+      <%= f.label :name, "宛名" %>
+      <%= f.text_field :name, class: "form-control mb-2" %>
+    </div>
+  </div>
+
+  <div class="text-center">
+    <%= f.submit "確認画面へ進む", class: "btn btn-success px-4" %>
+  </div>
+
+<% end %>
