@@ -18,6 +18,9 @@ class Public::OrdersController < ApplicationController
     @cart_items = current_customer.cart_items
   end
 
+  def finish
+  end
+  
   private
 
   def order_params
