@@ -1,4 +1,5 @@
 class Customer < ApplicationRecord
+  has_many :orders, dependent: :destroy
   has_many :cart_items, dependent: :destroy
 
   # Include default devise modules. Others available are:

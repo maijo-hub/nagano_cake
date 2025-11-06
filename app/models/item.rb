@@ -3,6 +3,8 @@ class Item < ApplicationRecord
   has_one_attached :image
   has_many :cart_items, dependent: :destroy
 
+  belongs_to :genre
+
   # バリデーション
   validates :name, :introduction, :price, presence: true
   validates :price, numericality: { only_integer: true, greater_than: 0 }
@@ -11,7 +13,7 @@ class Item < ApplicationRecord
   default_scope -> { order(created_at: :desc) }
 
   # 税込価格を返すメソッド
-  def add_tax_price
+  def with_tax_price
     (price * 1.1).floor  # floorにすると小数点切り捨て（販売価格で使いやすい）
   end
 

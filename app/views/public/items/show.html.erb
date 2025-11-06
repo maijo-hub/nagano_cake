@@ -17,7 +17,7 @@
       <p class="text-muted mb-4"><%= @item.introduction %></p>
 
       <p class="fs-4 fw-bold text-pink">
-        <%= number_to_currency(@item.add_tax_price, unit: "¥", format: "%u%n", precision: 0) %>
+        <%= number_to_currency(@item.with_tax_price, unit: "¥", format: "%u%n", precision: 0) %>
         <span class="fs-6 text-muted">(税込)</span>
       </p>
 

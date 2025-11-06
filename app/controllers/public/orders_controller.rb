@@ -18,6 +18,29 @@ class Public::OrdersController < ApplicationController
     @cart_items = current_customer.cart_items
   end
 
+  def create
+    @order = current_customer.orders.new(order_params)
+    @order.shipping_cost = 800 # 送料固定(例)
+  
+    if @order.save
+      current_customer.cart_items.each do |cart_item|
+        @order.order_details.create!(
+          item_id: cart_item.item_id,
+          price: cart_item.item.with_tax_price,
+          amount: cart_item.amount
+        )
+      end
+  
+      current_customer.cart_items.destroy_all
+      redirect_to finish_orders_path
+    else
+      @order = Order.new(order_params)
+      @cart_items = current_customer.cart_items
+      render :check
+    end
+  end
+  
+
   def finish
   end
   

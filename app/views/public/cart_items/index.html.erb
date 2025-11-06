@@ -24,7 +24,7 @@
             <td><%= cart_item.item.name %></td>
 
             <td>
-              <%= number_to_currency(cart_item.item.add_tax_price, unit: "¥", format: "%u%n", precision: 0) %>
+              <%= number_to_currency(cart_item.item.with_tax_price, unit: "¥", format: "%u%n", precision: 0) %>
             </td>
 
             <td>
@@ -39,7 +39,7 @@
             </td>
 
             <td>
-              <%= number_to_currency(cart_item.item.add_tax_price * cart_item.amount, unit: "¥", format: "%u%n", precision: 0) %>
+              <%= number_to_currency(cart_item.item.with_tax_price * cart_item.amount, unit: "¥", format: "%u%n", precision: 0) %>
             </td>
 
             <td>
