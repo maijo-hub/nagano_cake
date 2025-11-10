@@ -24,8 +24,8 @@
                       style: "color: #ff85c0;" %>
         </td>
 
-        <td><%= order.customer.name %></td>
-        <td><%= order.order_items.sum(:amount) %></td>
+        <td><%= order.customer.full_name %></td>
+        <td><%= order.order_details.sum(:amount) %></td>
        </tr>
       <% end %>
     </tbody>

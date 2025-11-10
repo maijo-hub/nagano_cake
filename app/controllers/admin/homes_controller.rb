@@ -3,6 +3,8 @@ class Admin::HomesController < ApplicationController
   before_action :authenticate_admin!
 
   def top
-    @orders = Order.includes(:customer, :order_items).order(created_at: :desc).page(params[:page])
+    @orders = Order.includes(:customer, :order_details)
+    .order(created_at: :desc)
+    .page(params[:page])
   end
 end
