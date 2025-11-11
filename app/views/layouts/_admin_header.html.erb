@@ -2,7 +2,7 @@
   <div class="container">
 
     <!-- 🌟 ロゴ部分 -->
-    <%= link_to admin_root_path, class: "navbar-brand fw-bold d-flex align-items-center", style: "color: #ff85c0;" do %>
+    <%= link_to admin_root_path, class: "navbar-brand fw-bold d-flex align-items-center admin-logo" do %>
       <i class="fa-solid fa-cake-candles me-2" style="font-size: 1.6rem;"></i>
       <span> NaganoCake Admin 🍰</span>
     <% end %>
@@ -15,15 +15,15 @@
     <div class="collapse navbar-collapse" id="adminNavbar">
       <nav class="ms-auto d-flex align-items-center">
         <% if admin_signed_in? %>
-          <%= link_to admin_items_path, class: "nav-link btn btn-pastel mx-1 d-flex align-items-center" do %>
+          <%= link_to admin_items_path, class: "nav-link btn admin-nav-link mx-1 d-flex align-items-center" do %>
             <i class="fa-solid fa-bag-shopping me-1"></i> 商品一覧
           <% end %>
 
-          <%= link_to admin_customers_path, class: "nav-link btn btn-pastel mx-1 d-flex align-items-center" do %>
+          <%= link_to admin_root_path, class: "nav-link btn btn-pastel mx-1 d-flex align-items-center admin-nav-link" do %>
             <i class="fa-solid fa-user me-1"></i> 会員一覧
           <% end %>
 
-          <%= link_to admin_orders_path, class: "nav-link btn btn-pastel mx-1 d-flex align-items-center" do %>
+          <%= link_to admin_root_path, class: "nav-link btn btn-pastel mx-1 d-flex align-items-center" do %>
             <i class="fa-solid fa-clipboard-list me-1"></i> 注文履歴一覧
           <% end %>
 

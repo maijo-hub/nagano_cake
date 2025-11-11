@@ -29,21 +29,26 @@
           <% @order_details.each do |detail| %>
             <tr>
               <td><%= detail.item.name %></td>
-              <td><%= number_to_currency(detail.price, unit: "¥", precision: 0) %></td>
+              <td><%= number_to_currency(detail.price, unit: "¥", format: "%u%n", precision: 0) %></td>
               <td><%= detail.amount %></td>
-              <td><%= number_to_currency(detail.price * detail.amount, unit: "¥", precision: 0) %></td>
+              <td><%= number_to_currency(detail.price * detail.amount, unit: "¥", format: "%u%n", precision: 0) %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
 
       <div class="mt-4 text-end">
-        <p><strong>商品合計：</strong> <%= number_to_currency(@order.total_payment - @order.postage, unit: "¥", precision: 0) %></p>
-        <p><strong>送料：</strong> <%= number_to_currency(@order.postage, unit: "¥", precision: 0) %></p>
+        <p><strong>商品合計：</strong> 
+          <%= number_to_currency(@order.total_payment - @order.shipping_cost, unit: "¥", format: "%u%n", precision: 0) %>
+        </p>
+        <p><strong>送料：</strong> 
+          <%= number_to_currency(@order.shipping_cost, unit: "¥", format: "%u%n", precision: 0) %>
+        </p>
         <p class="fs-5 fw-bold text-pink">請求金額合計：
-          <%= number_to_currency(@order.total_payment, unit: "¥", precision: 0) %>
+          <%= number_to_currency(@order.total_payment, unit: "¥", format: "%u%n", precision: 0) %>
         </p>
       </div>
+
     </div>
   </div>
 </div>

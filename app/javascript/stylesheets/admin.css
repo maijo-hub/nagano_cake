@@ -1,0 +1,47 @@
+/*
+ *= require_self
+ */
+
+ .admin-body .admin-logo {
+  color: #001f3f; /* ネイビー系 */
+}
+
+.admin-body .navbar {
+  background-color: #1e3a8a !important;
+}
+
+.admin-body a {
+  color: #1e3a8a;
+}
+
+.admin-body .btn-primary {
+  background-color: #1e3a8a !important;
+  border-color: #1e3a8a !important;
+}
+
+.admin-body .btn-primary:hover {
+  opacity: 0.85;
+}
+
+.admin-body .admin-nav-link {
+  background-color: #001f3f; /* ネイビー系背景 */
+  color: #ffffff; /* 白文字 */
+  border-color: #001f3f; /* ボーダーもネイビー */
+}
+.admin-body .admin-nav-link:hover {
+  background-color: #003366; /* ホバーで濃いネイビー */
+  color: #ffffff;
+}
+
+.admin-body .admin-table {
+  background-color: #e6f0ff; /* 薄いネイビー背景 */
+}
+
+.admin-body .admin-table thead {
+  background-color: #cce0ff; /* ヘッダー濃いめネイビー */
+  color: #001f3f; /* 文字色ネイビー */
+}
+
+.admin-body .admin-table tbody td {
+  color: #001f3f; /* 文字色ネイビー */
+}

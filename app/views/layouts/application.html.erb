@@ -10,12 +10,17 @@
     <script src="https://kit.fontawesome.com/18b80b8bde.js" crossorigin="anonymous"></script>
 
     <!-- CSS / JS -->
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <% if controller_path.start_with?('admin/') %>
+      <%= stylesheet_pack_tag 'admin', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <% else %>
+      <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <% end %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
   </head>
 
-  <body>
+  <body class="<%= 'admin-background' if controller_path.start_with?('admin/') %>">
+
     <% if controller_path.start_with?('admin/') %>
       <!-- 管理者用ヘッダー -->
       <%= render 'layouts/admin_header' %>
@@ -25,8 +30,9 @@
     <% end %>
 
     <!-- メインコンテンツ -->
-    <main class="container">
+    <main class="container my-4">
       <%= yield %>
     </main>
+    
   </body>
 </html>
