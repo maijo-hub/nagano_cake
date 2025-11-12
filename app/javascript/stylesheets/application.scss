@@ -2,31 +2,29 @@
 @import "public/items";
 @import "admin/customers";
 
-
+/* -------------------------
+   共通変数
+-------------------------- */
+$header-height: 70px;
+$header-height-lg: 80px;
 
 /* -------------------------
-   ヘッダー高さの変数
-   admin / public 共通で調整
+   共通スタイル
 -------------------------- */
-$header-height: 70px;  // デフォルトヘッダー高さ
-$header-height-lg: 80px; // 大きい画面用に微調整
-
 body {
   background-color: #fff5f8;
   font-family: 'Helvetica Neue', Arial, sans-serif;
 }
 
-/* ヘッダー共通 */
 header.navbar {
-  position: relative;  // 固定でない場合
+  position: relative;
   z-index: 1000;
   height: $header-height;
   @media (min-width: 992px) {
-    height: $header-height-lg;  // デスクトップは少し高く
+    height: $header-height-lg;
   }
 }
 
-/* メインコンテンツの余白をヘッダー高さに自動追従 */
 main.container {
   margin-top: $header-height;
   @media (min-width: 992px) {
@@ -36,7 +34,6 @@ main.container {
   padding-bottom: 1.5rem;
 }
 
-/* aタグホバーアニメーション */
 a {
   transition: 0.2s;
   &:hover {
@@ -47,13 +44,12 @@ a {
 
 /* ボタン */
 .btn-pastel {
-  background-color: #ffd6e8; /* 薄ピンク */
+  background-color: #ffd6e8;
   color: #6b2a5c;
   border-radius: 50px;
   padding: 0.4rem 0.8rem;
   font-weight: 500;
   transition: 0.2s;
-
   &:hover {
     background-color: #ffb3d2;
     color: #fff;
@@ -68,8 +64,7 @@ a {
 
 /* ナビリンク間の余白 */
 .navbar-nav .nav-item {
-  margin-left: 0.3rem;
-  margin-right: 0.3rem;
+  margin: 0 0.3rem;
 }
 
 /* ハンバーガーアイコン色 */
@@ -77,24 +72,21 @@ a {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,133,192,0.9)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
 
-/* テーブルの丸角 & 影 */
+/* テーブル */
 table {
   border-radius: 12px;
   overflow: hidden;
-}
-
-thead th {
-  font-weight: 600;
-  color: #6b2a5c;
-}
-
-tbody td {
-  color: #4a2a48;
-  vertical-align: middle;
-}
-
-tbody tr:hover {
-  background-color: #ffe0f2;
+  & th {
+    font-weight: 600;
+    color: #6b2a5c;
+  }
+  & td {
+    color: #4a2a48;
+    vertical-align: middle;
+  }
+  & tr:hover {
+    background-color: #fff0f8;
+  }
 }
 
 /* 見出しピンク */
@@ -102,42 +94,141 @@ h2.text-pink {
   color: #ff85c0;
 }
 
-/* ページネーションボタン */
+/* ページネーション */
 .pagination .page-link {
   background-color: #ffd6e8;
   color: #6b2a5c;
   border-radius: 50px;
   margin: 0 2px;
+  &:hover {
+    background-color: #ffb3d2;
+    color: #fff;
+  }
 }
 
-.pagination .page-link:hover {
-  background-color: #ffb3d2;
-  color: #fff;
-}
-
-/* FontAwesomeアイコン色 */
+/* FontAwesomeアイコン */
 i.fa-solid {
   color: #ff85c0;
 }
 
-h2.text-pink {
-  color: #ff85c0;
-}
-
+/* カード */
 .card {
   background-color: #fff;
   border-radius: 15px;
 }
 
-table th {
-  color: #6b2a5c;
-  font-weight: 600;
-}
+/* ==========================
+   管理者テーマ（柔らかめ配色）
+========================== */
+.admin-background {
+  background-color: #f3f6fb;
+  color: #333;
 
-table td {
-  color: #4a2a48;
-}
+  header.navbar {
+    background-color: #5b8def;
+    color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
 
-table tr:hover {
-  background-color: #fff0f8;
+  .navbar-brand,
+  .navbar-brand i {
+    color: #ffffff;
+  }
+
+  .nav-link {
+    background-color: #eaf0fb;
+    color: #2b3e6f;
+    border-radius: 8px;
+    margin: 0 4px;
+    transition: all 0.2s ease;
+    &:hover {
+      background-color: #d5e3ff;
+      color: #1a2d55;
+    }
+  }
+
+  i.fa-solid {
+    color: #2b3e6f;
+  }
+
+  table {
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    thead th {
+      background-color: #5b8def;
+      color: white;
+      font-weight: 600;
+    }
+    tbody tr:hover {
+      background-color: #edf3ff;
+    }
+  }
+
+  h2 {
+    color: #2b3e6f;
+    border-left: 6px solid #5b8def;
+    padding-left: 10px;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .pagination .page-link {
+    background-color: #5b8def;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    margin: 0 2px;
+    &:hover {
+      background-color: #3d6fe0;
+    }
+  }
+
+  main.container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  /* 管理者ヘッダーボタン */
+  .btn-admin {
+    background-color: #003c7f;
+    color: #ffffff;
+    font-weight: 500;
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.2s;
+    &:hover {
+      background-color: #001f3f;
+    }
+  }
+
+  .btn-logout {
+    background-color: #c82333;
+    color: #ffffff;
+    &:hover {
+      background-color: #a71d2a;
+    }
+  }
+
+  header.navbar {
+    background-color: #002c5f !important;
+    border-bottom: 3px solid #004b8d;
+  }
+
+  .navbar-brand {
+    color: #ffffff !important;
+    font-weight: 600;
+  }
+
+  .nav-link {
+    color: #ffffff !important;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+    &:hover {
+      background-color: #004b8d !important;
+    }
+  }
 }

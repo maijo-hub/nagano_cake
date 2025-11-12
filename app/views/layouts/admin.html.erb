@@ -15,7 +15,7 @@
 
   </head>
 
-  <body class="<%= controller_path.start_with?('admin/') ? 'admin-body' : '' %>">
+  <body class="<%= controller_path.start_with?('admin/') ? 'admin-background' : '' %>">
     <%= render 'layouts/admin_header' %>
     <main class="container">
       <%= yield %>

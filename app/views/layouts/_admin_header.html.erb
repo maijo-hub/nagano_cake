@@ -15,27 +15,27 @@
     <div class="collapse navbar-collapse" id="adminNavbar">
       <nav class="ms-auto d-flex align-items-center">
         <% if admin_signed_in? %>
-          <%= link_to admin_items_path, class: "nav-link btn admin-nav-link mx-1 d-flex align-items-center" do %>
+          <%= link_to admin_items_path, class: "nav-link btn btn-admin mx-1 d-flex align-items-center" do %>
             <i class="fa-solid fa-bag-shopping me-1"></i> 商品一覧
           <% end %>
-
-          <%= link_to admin_root_path, class: "nav-link btn btn-pastel mx-1 d-flex align-items-center admin-nav-link" do %>
+        
+          <%= link_to admin_customers_path, class: "nav-link btn btn-admin mx-1 d-flex align-items-center" do %>
             <i class="fa-solid fa-user me-1"></i> 会員一覧
           <% end %>
-
-          <%= link_to admin_root_path, class: "nav-link btn btn-pastel mx-1 d-flex align-items-center" do %>
+        
+          <%= link_to admin_orders_path, class: "nav-link btn btn-admin mx-1 d-flex align-items-center" do %>
             <i class="fa-solid fa-clipboard-list me-1"></i> 注文履歴一覧
           <% end %>
-
-          <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link btn btn-danger mx-1 d-flex align-items-center" do %>
+        
+          <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link btn btn-logout mx-1 d-flex align-items-center" do %>
             <i class="fa-solid fa-right-from-bracket me-1"></i> ログアウト
           <% end %>
-            <% else %>
-          <%= link_to items_path, class: "nav-link btn btn-pastel mx-1 d-flex align-items-center" do %>
+        <% else %>
+          <%= link_to items_path, class: "nav-link btn btn-admin mx-1 d-flex align-items-center" do %>
             <i class="fa-solid fa-bag-shopping me-1"></i> 商品一覧
           <% end %>
-
-          <%= link_to new_admin_session_path, class: "nav-link btn btn-pastel mx-1 d-flex align-items-center" do %>
+        
+          <%= link_to new_admin_session_path, class: "nav-link btn btn-admin mx-1 d-flex align-items-center" do %>
             <i class="fa-solid fa-right-to-bracket me-1"></i> ログイン
           <% end %>
         <% end %>
