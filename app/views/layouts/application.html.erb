@@ -10,12 +10,9 @@
     <script src="https://kit.fontawesome.com/18b80b8bde.js" crossorigin="anonymous"></script>
 
     <!-- CSS / JS -->
-    <% if controller_path.start_with?('admin/') %>
-      <%= stylesheet_pack_tag 'admin', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <% else %>
+    <!-- CSS / JS -->
       <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <% end %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
   </head>
 
