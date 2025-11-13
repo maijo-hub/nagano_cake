@@ -232,3 +232,31 @@ i.fa-solid {
     }
   }
 }
+
+/* ==========================
+   管理者 商品一覧テーブル調整
+========================== */
+.admin-background .item-list-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-background .item-list-table th,
+.admin-background .item-list-table td {
+  text-align: left;
+  padding: 0.6rem 0.8rem;
+  white-space: nowrap;
+}
+
+/* 商品名と価格の間隔を自然に */
+.admin-background .item-list-table td:nth-child(2),
+.admin-background .item-list-table td:nth-child(3) {
+  width: auto;
+  max-width: 250px;
+}
+
+/* 価格の表示を¥マークを先に */
+.admin-background .item-list-table td.price::before {
+  content: "¥";
+  margin-right: 2px;
+}
