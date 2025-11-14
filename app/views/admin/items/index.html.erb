@@ -8,7 +8,7 @@
     <% end %>
   </div>
 
-  <div class="table-responsive">
+  <table class="table align-middle shadow-sm rounded-3 item-list-table">
     <table class="table align-middle shadow-sm rounded-3 item-list-table">
       <thead class="table-light">
         <tr>
@@ -57,33 +57,44 @@
 
   .item-list-table {
     width: 100%;
-    table-layout: fixed; 
+    table-layout: auto; 
   }
-  
-  .item-list-table th,
-  .item-list-table td {
-    text-align: left;
-    padding: 0.6rem 0.8rem;
-    vertical-align: middle;
+
+  .item-list-table th:nth-child(2),
+  .item-list-table td:nth-child(2) {
+    white-space: normal;   
+    width: auto;          
   }
-  
+
   .item-list-table th:nth-child(1),
   .item-list-table td:nth-child(1) {
     width: 10%;
     text-align: center;
   }
-  
-  .item-list-table th:nth-child(2),
-  .item-list-table td:nth-child(2) {
-    width: 60%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  
+
   .item-list-table th:nth-child(3),
   .item-list-table td:nth-child(3) {
-    width: 20%;
+    width: 15%;   
     text-align: right;
+  }
+
+  @media (min-width: 992px) {
+    .item-list-table th:nth-child(2),
+    .item-list-table td:nth-child(2) {
+      max-width: 400px; 
+    }
+  }
+  .item-list-table {
+    table-layout: auto !important;   
+    width: auto;                      
+    max-width: 100%;                  
+  }
+
+  .item-list-table th:nth-child(2),
+  .item-list-table td:nth-child(2) {
+    width: auto !important;    
+    white-space: nowrap;        
+  }
+
 
 </style>
