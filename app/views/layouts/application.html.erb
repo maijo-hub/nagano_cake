@@ -27,9 +27,10 @@
     <% end %>
 
     <!-- メインコンテンツ -->
-    <main class="container my-4">
+    <main class="<%= controller_path.start_with?('admin/') ? 'admin-main' : 'public-main' %>">
       <%= yield %>
     </main>
+
     
   </body>
 </html>

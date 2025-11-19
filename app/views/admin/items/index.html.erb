@@ -8,13 +8,13 @@
     <% end %>
   </div>
 
-  <table class="table align-middle shadow-sm rounded-3 item-list-table">
+  <div class="table-responsive">
     <table class="table align-middle shadow-sm rounded-3 item-list-table">
       <thead class="table-light">
         <tr>
-          <th class="text-center text-secondary fw-bold py-2" style="width:10%;">商品ID</th>
-          <th class="text-start text-secondary fw-bold py-2" style="width:70%;">商品名</th>
-          <th class="text-end text-secondary fw-bold py-2" style="width:20%;">価格（税抜）</th>
+          <th class="text-center text-secondary fw-bold py-2">商品ID</th>
+          <th class="text-start text-secondary fw-bold py-2">商品名</th>
+          <th class="text-end text-secondary fw-bold py-2">価格（税抜）</th>
         </tr>
       </thead>
 
@@ -27,8 +27,8 @@
                 <i class="fa-solid fa-star text-warning"></i> <%= item.name %>
               <% end %>
             </td>
-            <td class="text-end text-success fw-bold">
-              <%= "¥#{number_with_delimiter(item.price)}" %>
+            <td class="text-end text-success fw-bold price">
+              <%= number_with_delimiter(item.price) %>
             </td>
           </tr>
         <% end %>
@@ -40,61 +40,3 @@
     <%= paginate @items %>
   </div>
 </div>
-
-<style>
-  .btn-pink {
-    background-color: #ff85c0;
-    color: white;
-  }
-  .btn-pink:hover {
-    background-color: #ff6bb0;
-    color: white;
-  }
-
-  .table tbody tr:nth-of-type(odd) {
-    background-color: #fff7fa;
-  }
-
-  .item-list-table {
-    width: 100%;
-    table-layout: auto; 
-  }
-
-  .item-list-table th:nth-child(2),
-  .item-list-table td:nth-child(2) {
-    white-space: normal;   
-    width: auto;          
-  }
-
-  .item-list-table th:nth-child(1),
-  .item-list-table td:nth-child(1) {
-    width: 10%;
-    text-align: center;
-  }
-
-  .item-list-table th:nth-child(3),
-  .item-list-table td:nth-child(3) {
-    width: 15%;   
-    text-align: right;
-  }
-
-  @media (min-width: 992px) {
-    .item-list-table th:nth-child(2),
-    .item-list-table td:nth-child(2) {
-      max-width: 400px; 
-    }
-  }
-  .item-list-table {
-    table-layout: auto !important;   
-    width: auto;                      
-    max-width: 100%;                  
-  }
-
-  .item-list-table th:nth-child(2),
-  .item-list-table td:nth-child(2) {
-    width: auto !important;    
-    white-space: nowrap;        
-  }
-
-
-</style>

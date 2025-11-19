@@ -27,11 +27,11 @@ header.navbar {
 
 main.container {
   margin-top: $header-height;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
   @media (min-width: 992px) {
     margin-top: $header-height-lg;
   }
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
 }
 
 a {
@@ -42,8 +42,10 @@ a {
   }
 }
 
-/* ボタン */
-.btn-pastel {
+/* -------------------------
+   ボタン
+-------------------------- */
+.btn-pastel, .btn-pink {
   background-color: #ffd6e8;
   color: #6b2a5c;
   border-radius: 50px;
@@ -62,23 +64,17 @@ a {
   font-weight: 500;
 }
 
-/* ナビリンク間の余白 */
-.navbar-nav .nav-item {
-  margin: 0 0.3rem;
-}
-
-/* ハンバーガーアイコン色 */
-.navbar-toggler-icon {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,133,192,0.9)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
-}
-
-/* テーブル */
+/* -------------------------
+   テーブル共通
+-------------------------- */
 table {
   border-radius: 12px;
   overflow: hidden;
+  width: 100%;
   & th {
     font-weight: 600;
     color: #6b2a5c;
+    vertical-align: middle;
   }
   & td {
     color: #4a2a48;
@@ -89,77 +85,48 @@ table {
   }
 }
 
-/* 見出しピンク */
-h2.text-pink {
-  color: #ff85c0;
-}
+/* -------------------------
+   管理者テーマ
+-------------------------- */
+  .admin-background {
+    header.navbar {
+      background-color: #5b8def; /* ヘッダーの背景色 */
+      border-bottom: 3px solid #004b8d; /* 下線 */
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      color: white;
+    }
 
-/* ページネーション */
-.pagination .page-link {
-  background-color: #ffd6e8;
-  color: #6b2a5c;
-  border-radius: 50px;
-  margin: 0 2px;
-  &:hover {
-    background-color: #ffb3d2;
-    color: #fff;
-  }
-}
+    .navbar-brand,
+    .navbar-brand i {
+      color: #ffffff;
+      font-weight: 600;
+    }
 
-/* FontAwesomeアイコン */
-i.fa-solid {
-  color: #ff85c0;
-}
-
-/* カード */
-.card {
-  background-color: #fff;
-  border-radius: 15px;
-}
-
-/* ==========================
-   管理者テーマ（柔らかめ配色）
-========================== */
-.admin-background {
-  background-color: #f3f6fb;
-  color: #333;
-
-  header.navbar {
-    background-color: #5b8def;
-    color: white;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-
-  .navbar-brand,
-  .navbar-brand i {
-    color: #ffffff;
-  }
-
-  .nav-link {
-    background-color: #eaf0fb;
-    color: #2b3e6f;
-    border-radius: 8px;
-    margin: 0 4px;
-    transition: all 0.2s ease;
-    &:hover {
-      background-color: #d5e3ff;
-      color: #1a2d55;
+    .nav-link {
+      background-color: #eaf0fb; /* ボタンっぽい背景 */
+      color: #2b3e6f;           /* 文字色 */
+      border-radius: 8px;
+      margin: 0 4px;
+      transition: all 0.2s ease;
+      &:hover {
+        background-color: #d5e3ff; /* ホバー色 */
+        color: #1a2d55;
+      }
     }
   }
+
 
   i.fa-solid {
     color: #2b3e6f;
   }
 
   table {
-    background-color: #ffffff;
+    background-color: #fff;
     border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     thead th {
       background-color: #5b8def;
-      color: white;
-      font-weight: 600;
+      color: #fff;
     }
     tbody tr:hover {
       background-color: #edf3ff;
@@ -174,10 +141,14 @@ i.fa-solid {
     margin-bottom: 1rem;
   }
 
+  main.container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
   .pagination .page-link {
     background-color: #5b8def;
     color: white;
-    border: none;
     border-radius: 6px;
     margin: 0 2px;
     &:hover {
@@ -185,78 +156,40 @@ i.fa-solid {
     }
   }
 
-  main.container {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+  /* -------------------------
+     商品一覧テーブル調整
+  -------------------------- */
+  .item-list-table {
+    width: 100%;
+    table-layout: auto;
+    border-collapse: collapse;
   }
 
-  /* 管理者ヘッダーボタン */
-  .btn-admin {
-    background-color: #003c7f;
-    color: #ffffff;
-    font-weight: 500;
-    border-radius: 6px;
-    padding: 0.5rem 1rem;
-    transition: background-color 0.2s;
-    &:hover {
-      background-color: #001f3f;
-    }
+  .item-list-table th,
+  .item-list-table td {
+    padding: 0.6rem 0.8rem;
+    vertical-align: middle;
   }
 
-  .btn-logout {
-    background-color: #c82333;
-    color: #ffffff;
-    &:hover {
-      background-color: #a71d2a;
-    }
+  .item-list-table th:nth-child(1),
+  .item-list-table td:nth-child(1) {
+    width: 10%;
+    text-align: center;
   }
 
-  header.navbar {
-    background-color: #002c5f !important;
-    border-bottom: 3px solid #004b8d;
+  .item-list-table th:nth-child(2),
+  .item-list-table td:nth-child(2) {
+    width: auto;
+    max-width: 400px;
+    white-space: normal;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
 
-  .navbar-brand {
-    color: #ffffff !important;
-    font-weight: 600;
+  .item-list-table th:nth-child(3),
+  .item-list-table td:nth-child(3) {
+    width: 20%;
+    text-align: right;
+    white-space: nowrap;
   }
 
-  .nav-link {
-    color: #ffffff !important;
-    font-weight: 500;
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
-    transition: background-color 0.2s;
-    &:hover {
-      background-color: #004b8d !important;
-    }
-  }
-}
-
-/* ==========================
-   管理者 商品一覧テーブル調整
-========================== */
-.admin-background .item-list-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.admin-background .item-list-table th,
-.admin-background .item-list-table td {
-  text-align: left;
-  padding: 0.6rem 0.8rem;
-  white-space: nowrap;
-}
-
-/* 商品名と価格の間隔を自然に */
-.admin-background .item-list-table td:nth-child(2),
-.admin-background .item-list-table td:nth-child(3) {
-  width: auto;
-  max-width: 250px;
-}
-
-/* 価格の表示を¥マークを先に */
-.admin-background .item-list-table td.price::before {
-  content: "¥";
-  margin-right: 2px;
-}
