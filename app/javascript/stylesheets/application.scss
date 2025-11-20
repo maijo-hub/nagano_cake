@@ -1,6 +1,10 @@
+// bootstrap
 @import "~bootstrap/scss/bootstrap";
+
+// あなたの既存CSS（存在するものだけ）
 @import "public/items";
 @import "admin/customers";
+
 
 /* -------------------------
    共通変数

@@ -3,7 +3,6 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 // app/javascript/packs/application.js
-import 'stylesheets/application.scss'
 
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
@@ -13,7 +12,7 @@ import "channels"
 import "jquery";
 import "popper.js";
 import "bootstrap";
-import "../stylesheets/application"; 
+import "../stylesheets/application.scss";
 
 Rails.start()
 Turbolinks.start()
