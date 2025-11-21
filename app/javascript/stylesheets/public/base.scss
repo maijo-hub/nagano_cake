@@ -1,0 +1,28 @@
+/* ---------- PUBLIC（ピンク系）テーマ ---------- */
+
+body {
+  background-color: #fff5f8;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+a {
+  transition: 0.2s;
+  &:hover {
+    color: #ff85c0;
+  }
+}
+
+.btn-primary,
+.btn-pink {
+  background-color: #ffd6e8;
+  color: #6b2a5c;
+  border-radius: 50px;
+  &:hover {
+    background-color: #ffb3d2;
+    color: #fff;
+  }
+}
+
+table tr:hover {
+  background-color: #fff0f8;
+}

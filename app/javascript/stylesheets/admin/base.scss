@@ -1,0 +1,43 @@
+/* ---------- ADMIN（青系）テーマ ---------- */
+
+body {
+  background-color: #f3f6ff;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+header.navbar {
+  background-color: #5b8def;
+  border-bottom: 3px solid #004b8d;
+  color: white;
+}
+
+a:hover {
+  color: #1a2d55;
+}
+
+/* 青系ボタン */
+.btn-admin {
+  background-color: #5b8def;
+  color: white;
+  border-radius: 8px;
+  &:hover {
+    background-color: #3d6fe0;
+  }
+}
+
+table {
+  background-color: white;
+  thead th {
+    background-color: #5b8def;
+    color: #ffffff;
+  }
+  tbody tr:hover {
+    background-color: #edf3ff;
+  }
+}
+
+h2 {
+  color: #2b3e6f;
+  border-left: 6px solid #5b8def;
+  padding-left: 10px;
+}
