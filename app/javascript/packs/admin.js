@@ -1,3 +1,1 @@
-import "../stylesheets/application";
-import "../stylesheets/admin/base.scss";
-import "../stylesheets/admin/customers.scss"; // admin のみ
+import "../stylesheets/admin/admin.scss";
