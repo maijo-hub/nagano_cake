@@ -1,0 +1,71 @@
+// ----------------------------------
+// Bootstrap（共通）
+// ----------------------------------
+@import "~bootstrap/scss/bootstrap";
+
+// ----------------------------------
+// 共通変数
+// ----------------------------------
+$header-height: 70px;
+$header-height-lg: 80px;
+
+// ----------------------------------
+// 共通レイアウト
+// ----------------------------------
+header.navbar {
+  position: relative;
+  z-index: 1000;
+  height: $header-height;
+  @media (min-width: 992px) {
+    height: $header-height-lg;
+  }
+}
+
+main.container {
+  margin-top: $header-height;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  @media (min-width: 992px) {
+    margin-top: $header-height-lg;
+  }
+}
+
+// ----------------------------------
+// 共通リンク挙動（hoverアニメ） ※色は各テーマで上書き
+// ----------------------------------
+a {
+  transition: 0.2s;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+// ----------------------------------
+// 共通ボタン（外枠と丸み）
+// ※色は public / admin で上書き
+// ----------------------------------
+.btn-pastel, .btn-pink, .btn-danger {
+  border-radius: 50px;
+  padding: 0.4rem 0.8rem;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+// ----------------------------------
+// 共通テーブル形状（色は各テーマが担当）
+// ----------------------------------
+table {
+  border-radius: 12px;
+  overflow: hidden;
+  width: 100%;
+  th, td {
+    vertical-align: middle;
+  }
+}
+
+// ----------------------------------
+// 共通：アイコンだけの色（admin で上書きの場合あり）
+// ----------------------------------
+i.fa-solid {
+  transition: 0.2s;
+}

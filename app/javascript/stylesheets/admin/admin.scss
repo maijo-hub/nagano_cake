@@ -1,2 +1,128 @@
+
+// 管理者側の青テーマ -------------------------
+
+@import "../shared/base";
 @import "admin/base";
 @import "admin/customers";
+
+// ----------------------------------
+// 管理者背景（青）
+// ----------------------------------
+.admin-background {
+  header.navbar {
+    background-color: #5b8def;
+    border-bottom: 3px solid #004b8d;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    color: white;
+  }
+
+  .navbar-brand,
+  .navbar-brand i {
+    color: #ffffff;
+    font-weight: 600;
+  }
+
+  .nav-link {
+    background-color: #eaf0fb;
+    color: #2b3e6f;
+    border-radius: 8px;
+    margin: 0 4px;
+    transition: 0.2s;
+    &:hover {
+      background-color: #d5e3ff;
+      color: #1a2d55;
+    }
+  }
+}
+
+// ----------------------------------
+// アイコン青
+// ----------------------------------
+i.fa-solid {
+  color: #2b3e6f;
+}
+
+// ----------------------------------
+// 青系テーブル
+// ----------------------------------
+table {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+
+  thead th {
+    background-color: #5b8def;
+    color: #fff;
+  }
+
+  tbody tr:hover {
+    background-color: #edf3ff;
+  }
+}
+
+// ----------------------------------
+// 見出し装飾
+// ----------------------------------
+h2 {
+  color: #2b3e6f;
+  border-left: 6px solid #5b8def;
+  padding-left: 10px;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+// ----------------------------------
+// 余白調整
+// ----------------------------------
+main.container {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+// ----------------------------------
+// ページネーション
+// ----------------------------------
+.pagination .page-link {
+  background-color: #5b8def;
+  color: #fff;
+  border-radius: 6px;
+  margin: 0 2px;
+  &:hover {
+    background-color: #3d6fe0;
+  }
+}
+
+// ----------------------------------
+// 商品一覧テーブル調整
+// ----------------------------------
+.item-list-table {
+  width: 100%;
+  table-layout: auto;
+  border-collapse: collapse;
+
+  th, td {
+    padding: 0.6rem 0.8rem;
+    vertical-align: middle;
+  }
+
+  th:nth-child(1),
+  td:nth-child(1) {
+    width: 10%;
+    text-align: center;
+  }
+
+  th:nth-child(2),
+  td:nth-child(2) {
+    max-width: 400px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+  }
+
+  th:nth-child(3),
+  td:nth-child(3) {
+    width: 20%;
+    text-align: right;
+    white-space: nowrap;
+  }
+}

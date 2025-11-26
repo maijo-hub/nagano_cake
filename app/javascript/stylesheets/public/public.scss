@@ -1,2 +1,49 @@
+
+// 公開側のピンクテーマ -------------------------
+
+@import "../shared/base";
 @import "public/base";
 @import "public/items";
+
+// ----------------------------------
+// 背景・フォント
+// ----------------------------------
+body {
+  background-color: #fff5f8;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+// ----------------------------------
+// リンクカラー（ピンク）
+// ----------------------------------
+a:hover {
+  color: #ff85c0;
+}
+
+// ----------------------------------
+// ピンク系ボタン
+// ----------------------------------
+.btn-pastel, .btn-pink {
+  background-color: #ffd6e8;
+  color: #6b2a5c;
+  &:hover {
+    background-color: #ffb3d2;
+    color: #fff;
+  }
+}
+
+// ----------------------------------
+// ピンク系テーブル
+// ----------------------------------
+table {
+  th {
+    font-weight: 600;
+    color: #6b2a5c;
+  }
+  td {
+    color: #4a2a48;
+  }
+  tr:hover {
+    background-color: #fff0f8;
+  }
+}
