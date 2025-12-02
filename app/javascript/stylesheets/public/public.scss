@@ -2,8 +2,8 @@
 // 公開側のピンクテーマ -------------------------
 
 @import "../shared/base";
-@import "public/base";
-@import "public/items";
+@import "./base";          
+@import "./items";
 
 // ----------------------------------
 // 背景・フォント

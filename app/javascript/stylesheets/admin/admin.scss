@@ -1,9 +1,9 @@
 
 // 管理者側の青テーマ -------------------------
-
+@import "~bootstrap/scss/bootstrap";
 @import "../shared/base";
-@import "admin/base";
-@import "admin/customers";
+@import "./base";         
+@import "./customers";
 
 // ----------------------------------
 // 管理者背景（青）
