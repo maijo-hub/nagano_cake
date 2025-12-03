@@ -1,4 +1,4 @@
-class Admin::ItemsController < ApplicationController
+class Admin::ItemsController < Admin::ApplicationController
   before_action :authenticate_admin!
   before_action :set_item, only: [:show, :edit, :update]
 
