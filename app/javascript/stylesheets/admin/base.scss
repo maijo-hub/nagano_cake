@@ -1,43 +1,109 @@
-/* ---------- ADMIN（青系）テーマ ---------- */
+/* ---------------------------------------------
+   ADMIN THEME（青系統一デザイン）
+   --------------------------------------------- */
 
+/* 全体背景 */
 body {
   background-color: #f3f6ff;
   font-family: 'Helvetica Neue', Arial, sans-serif;
 }
 
+/* ---------------------------------------------
+   HEADER（管理者ヘッダー）
+   --------------------------------------------- */
 header.navbar {
   background-color: #5b8def;
   border-bottom: 3px solid #004b8d;
   color: white;
+
+  a.nav-link {
+    color: #ffffff !important;
+    font-weight: bold;
+
+    &:hover {
+      color: #dce6ff !important;
+    }
+  }
 }
 
-a:hover {
-  color: #1a2d55;
+/* ---------------------------------------------
+   見出し <h2>
+   --------------------------------------------- */
+h2 {
+  color: #2b3e6f;
+  font-weight: bold;
+  border-left: 6px solid #5b8def;
+  padding-left: 10px;
 }
 
-/* 青系ボタン */
-.btn-admin {
+/* 注文履歴一覧のピンク文字を青に変更 */
+.text-admin-primary {
+  color: #5b8def !important;
+}
+
+/* ---------------------------------------------
+   ボタン（青系統一）
+   --------------------------------------------- */
+.btn-admin,
+.btn-blue {
   background-color: #5b8def;
-  color: white;
+  color: #ffffff;
   border-radius: 8px;
+  font-weight: bold;
+
   &:hover {
     background-color: #3d6fe0;
+    color: #ffffff;
   }
 }
 
-table {
-  background-color: white;
+/* 商品一覧ページの "新規登録" ボタンも統一 */
+.btn-pink {
+  @extend .btn-blue;
+}
+
+/* ---------------------------------------------
+   テーブル（共通スタイル）
+   --------------------------------------------- */
+.admin-table,
+.item-list-table,
+.table {
+  background-color: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+
   thead th {
-    background-color: #5b8def;
-    color: #ffffff;
+    background-color: #5b8def !important;
+    color: #ffffff !important;
+    text-align: center;
+    font-weight: bold;
   }
+
   tbody tr:hover {
     background-color: #edf3ff;
   }
+
+  tbody td {
+    color: #1c2a4a;
+    font-weight: 500;
+  }
 }
 
-h2 {
-  color: #2b3e6f;
-  border-left: 6px solid #5b8def;
-  padding-left: 10px;
+/* 商品一覧の price */
+.price {
+  color: #2b3e6f !important;
+  font-weight: bold;
+}
+
+/* ---------------------------------------------
+   リンク
+   --------------------------------------------- */
+a {
+  color: #3d6fe0;
+  text-decoration: none;
+
+  &:hover {
+    color: #1a2d55;
+    text-decoration: underline;
+  }
 }
