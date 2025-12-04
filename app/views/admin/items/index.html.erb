@@ -1,35 +1,40 @@
 <div class="container mt-4">
+
   <div class="d-flex justify-content-between align-items-center mb-3">
-    <h2 class="fw-bold text-primary mb-0">
-      <i class="fa-solid fa-cake-candles"></i> 商品一覧
+    <h2 class="admin-title mb-0">
+      <i class="fa-solid fa-cake-candles icon-blue"></i>
+      商品一覧
     </h2>
-    <%= link_to new_admin_item_path, class: "btn btn-pink fw-bold" do %>
+
+    <%= link_to new_admin_item_path, class: "btn btn-admin fw-bold" do %>
       <i class="fa-solid fa-plus"></i> 新規登録
     <% end %>
   </div>
 
   <div class="table-responsive">
-    <table class="table align-middle shadow-sm rounded-3 item-list-table">
-      <thead class="table-light">
+    <table class="table admin-table">
+      <thead>
         <tr>
-          <th class="text-center text-secondary fw-bold py-2">商品ID</th>
-          <th class="text-start text-secondary fw-bold py-2">商品名</th>
-          <th class="text-end text-secondary fw-bold py-2">価格（税抜）</th>
+          <th class="text-center">商品ID</th>
+          <th class="text-center">商品名</th>
+          <th class="text-center">価格（税抜）</th>
         </tr>
       </thead>
 
       <tbody>
         <% @items.each do |item| %>
           <tr>
-            <td class="text-center text-secondary fw-bold"><%= item.id %></td>
-            <td class="fw-bold text-dark">
-              <%= link_to admin_item_path(item), class: "text-decoration-none text-dark" do %>
-                <i class="fa-solid fa-star text-warning"></i> <%= item.name %>
+            <td class="text-center"><%= item.id %></td>
+
+            <td class="text-center">
+              <%= link_to admin_item_path(item),
+                          class: "link-blue text-decoration-none" do %>
+                <i class="fa-solid fa-star text-warning"></i>
+                <span><%= item.name %></span>
               <% end %>
             </td>
-            <td class="text-end text-success fw-bold price">
-              <%= number_with_delimiter(item.price) %>
-            </td>
+
+            <td class="text-center"><%= number_with_delimiter(item.price) %></td>
           </tr>
         <% end %>
       </tbody>
@@ -39,4 +44,5 @@
   <div class="d-flex justify-content-center mt-4">
     <%= paginate @items %>
   </div>
+
 </div>
