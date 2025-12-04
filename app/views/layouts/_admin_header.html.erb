@@ -1,47 +1,55 @@
-<header class="navbar navbar-expand-lg shadow-sm">
+<header class="admin-header navbar navbar-expand-lg shadow-sm">
   <div class="container">
 
-    <!-- 🌟 ロゴ部分 -->
+    <!-- ロゴ -->
     <%= link_to admin_root_path, class: "navbar-brand fw-bold d-flex align-items-center admin-logo" do %>
-      <i class="fa-solid fa-cake-candles me-2" style="font-size: 1.6rem; color: #ffd166;"></i>
-      <span> NaganoCake Admin 🍰</span>
+      <i class="fa-solid fa-cake-candles me-2 logo-icon"></i>
+      <span>NaganoCake Admin</span>
     <% end %>
 
-    <!-- ハンバーガー用ボタン（モバイル用） -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#adminNavbar" aria-controls="adminNavbar" aria-expanded="false" aria-label="Toggle navigation">
+    <!-- ハンバーガーボタン（スマホ用） -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#adminNavbar" aria-controls="adminNavbar"
+            aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
+    <!-- メニュー -->
     <div class="collapse navbar-collapse" id="adminNavbar">
-      <nav class="ms-auto d-flex align-items-center">
+      <nav class="ms-auto d-flex align-items-center gap-2">
+
         <% if admin_signed_in? %>
-          <%= link_to admin_items_path, class: "nav-link btn btn-admin mx-1 d-flex align-items-center" do %>
+
+          <%= link_to admin_items_path, class: "admin-nav-btn" do %>
             <i class="fa-solid fa-bag-shopping me-1"></i> 商品一覧
           <% end %>
-        
-          <%= link_to admin_customers_path, class: "nav-link btn btn-admin mx-1 d-flex align-items-center" do %>
+
+          <%= link_to admin_customers_path, class: "admin-nav-btn" do %>
             <i class="fa-solid fa-user me-1"></i> 会員一覧
           <% end %>
-        
-          <%= link_to admin_root_path, class: "nav-link btn btn-admin mx-1 d-flex align-items-center" do %>
+
+          <%= link_to admin_root_path, class: "admin-nav-btn" do %>
             <i class="fa-solid fa-clipboard-list me-1"></i> 注文履歴一覧
           <% end %>
-        
-          <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link btn btn-logout mx-1 d-flex align-items-center" do %>
+
+          <%= link_to destroy_admin_session_path, method: :delete, class: "admin-logout-btn" do %>
             <i class="fa-solid fa-right-from-bracket me-1"></i> ログアウト
           <% end %>
+
         <% else %>
-          <%= link_to items_path, class: "nav-link btn btn-admin mx-1 d-flex align-items-center" do %>
+
+          <%= link_to items_path, class: "admin-nav-btn" do %>
             <i class="fa-solid fa-bag-shopping me-1"></i> 商品一覧
           <% end %>
-        
-          <%= link_to new_admin_session_path, class: "nav-link btn btn-admin mx-1 d-flex align-items-center" do %>
+
+          <%= link_to new_admin_session_path, class: "admin-nav-btn" do %>
             <i class="fa-solid fa-right-to-bracket me-1"></i> ログイン
           <% end %>
+
         <% end %>
+
       </nav>
     </div>
+
   </div>
 </header>
-
-

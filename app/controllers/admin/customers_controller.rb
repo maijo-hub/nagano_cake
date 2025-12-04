@@ -2,7 +2,7 @@ class Admin::CustomersController < Admin::ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @customers = Customer.all.order(:id)  # ← これを追加！
+    @customers = Customer.page(params[:page]).per(10)  # ← これを追加！
   end
 
   def show
