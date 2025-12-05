@@ -1,138 +1,157 @@
-// ---------------------------------------------
-// ADMIN THEME（ライト青ベース＋濃紺アクセント）
-// ---------------------------------------------
+// admin.scss — 管理画面専用スタイル（ライト青ベース、ヘッダーにのみ白文字）
+// コピーして上書きしてください（既存の admin.scss は丸ごと置換）
 
 @import "~bootstrap/scss/bootstrap";
 
-// ---------------------------------------------
-// 全体背景
-// ---------------------------------------------
+/* ---------------------------------------------
+   全体（body が管理画面モードのときに最低限）
+   --------------------------------------------- */
 body.admin-background {
   background-color: #f3f6ff;
   font-family: 'Helvetica Neue', Arial, sans-serif;
 }
 
-// ---------------------------------------------
-// HEADER
-// ---------------------------------------------
+/* ---------------------------------------------
+   HEADER（**限定的に** .admin-header にだけ適用）
+   - layouts/_admin_header.html.erb の header 要素に class="admin-header" がある前提
+   --------------------------------------------- */
 .admin-header {
   background-color: #5b8def;
   border-bottom: 3px solid #004b8d;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.08);
 
   .navbar-brand {
     color: #ffffff !important;
     font-weight: 700;
+    i.logo-icon { color: #ffd166; } /* ロゴの差し色 */
+    &:hover { color: #e8efff !important; }
+  }
 
-    i.logo-icon {
-      color: #ffd166;
-    }
+  /* ヘッダーメニュー用のボタン風リンク（視認性高く） */
+  a.admin-nav-btn {
+    color: #ffffff !important;
+    background: transparent;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background-color .15s ease;
 
     &:hover {
-      color: #e8efff !important;
+      background-color: rgba(255,255,255,0.12);
+      color: #ffffff !important;
     }
   }
-}
 
-/* 管理者メニュー共通ボタン */
-.admin-nav-btn {
-  color: #ffffff !important;
-  background-color: transparent;
-  padding: 10px 16px;
-  border-radius: 8px;
-  font-weight: 600;
-  transition: 0.2s;
-
-  &:hover {
-    background-color: rgba(255,255,255,0.15);
+  /* ログアウトだけ赤く強調 */
+  a.admin-logout-btn {
+    background-color: #d9534f !important;
     color: #ffffff !important;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-weight: 600;
+
+    &:hover { background-color: #c9302c !important; }
   }
 }
 
-/* ログアウトボタンだけ赤 */
-.admin-logout-btn {
-  background-color: #d9534f !important;
-  color: #ffffff !important;
-  padding: 10px 16px;
-  border-radius: 8px;
-  font-weight: 600;
-
-  &:hover {
-    background-color: #c9302c !important;
-  }
-}
-
-// ---------------------------------------------
-// 見出し
-// ---------------------------------------------
-h2 {
-  color: #2b3e6f;
-  font-weight: bold;
-  border-left: 6px solid #5b8def;
-  padding-left: 10px;
-  margin: 1.2rem 0;
-}
-
-// ---------------------------------------------
-// テーブル
-// ---------------------------------------------
-table,
+/* ---------------------------------------------
+   テーブル共通（admin 用のテーブルは .admin-table / .item-list-table を使う想定）
+   ヘッダーは白、データは濃い青（可読性重視）
+   --------------------------------------------- */
 .admin-table,
 .item-list-table {
-  background-color: #ffffff;
+  width: 100%;
+  background: #ffffff;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-
-  thead th {
-    background-color: #5b8def !important;
-    color: #ffffff !important;
-  }
-
-  tbody td {
-    text-align: center;
-    color: #1c2a4a;
-    font-weight: 500;
-  }
-
-  tbody tr:hover {
-    background-color: #edf3ff;
-  }
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  border-collapse: collapse;
 }
 
-.price {
-  color: #2b3e6f !important;
-  font-weight: bold;
+/* ヘッダー（中央揃え） */
+.admin-table thead th,
+.item-list-table thead th {
+  background-color: #5b8def !important;
+  color: #ffffff !important;
+  font-weight: 700;
+  text-align: center;
+  padding: 0.8rem;
 }
 
-// ---------------------------------------------
-// ページネーション
-// ---------------------------------------------
+/* データ行（基本は濃い色で可読性） */
+.admin-table tbody td,
+.item-list-table tbody td {
+  color: #1c2a4a;     /* 濃い青で可読性確保 */
+  font-weight: 500;
+  padding: 0.7rem;
+  vertical-align: middle;
+  text-align: center; /* デフォルト中央。列別に下で上書き */
+}
+
+/* 商品一覧：列ごとの揃え（1: id center / 2: name left / 3: price right） */
+.item-list-table thead th:nth-child(1),
+.item-list-table tbody td:nth-child(1) { text-align: center; width: 10%; }
+
+.item-list-table thead th:nth-child(2),
+.item-list-table tbody td:nth-child(2) {
+  text-align: left;
+  width: auto;
+  max-width: 520px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-left: 1rem;
+}
+
+.item-list-table thead th:nth-child(3),
+.item-list-table tbody td:nth-child(3) { text-align: right; width: 15%; white-space: nowrap; }
+
+/* 注文履歴テーブルの列整列例（ヘッダーは中央、データは列用途に合わせる） */
+.admin-table.order-table thead th { text-align: center; }
+.admin-table.order-table tbody td:nth-child(1) { text-align: center; } /* 日時 */
+.admin-table.order-table tbody td:nth-child(2) { text-align: left; padding-left: 1rem; } /* 購入者 */
+.admin-table.order-table tbody td:nth-child(3) { text-align: center; } /* 個数 */
+
+/* テーブル内リンクは**必ず**データ色を継承させる（白くなるのを防ぐ） */
+.admin-table tbody a,
+.item-list-table tbody a {
+  color: inherit !important;
+  text-decoration: none;
+}
+
+/* テーブル内アイコン（例：★）は差し色に */
+.item-list-table tbody i,
+.admin-table tbody i {
+  color: #f7b500;
+}
+
+/* 行ホバー */
+.admin-table tbody tr:hover,
+.item-list-table tbody tr:hover {
+  background-color: #edf3ff;
+}
+
+/* ページネーション */
 .pagination .page-link {
   background-color: #5b8def;
-  color: white;
+  color: #fff;
   border-radius: 6px;
-
-  &:hover {
-    background-color: #3d6fe0;
-  }
 }
 
-// ---------------------------------------------
-// 汎用リンク色
-// ---------------------------------------------
-body.admin-background a {
-  color: #e8efff;
-  text-decoration: none;
+/* 汎用リンク（ページ内リンク）は青系（但し header の白とは別扱い） */
+.admin-content a { color: #3d6fe0; } /* .admin-content をページ wrapper に付けるとより安心 */
 
-  &:hover {
-    color: #ffffff;
-  }
+/* 会員ステータスバッジ */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px;
+  border-radius: 12px;
+  font-weight: bold;
+  color: #fff;
 }
+.status-badge.active { background-color: #3ca860; }
+.status-badge.inactive { background-color: #9aa3b5; }
 
-// ---------------------------------------------
-// アイコン（青系）
-// ---------------------------------------------
-body.admin-background i.fa-solid {
-  color: #ffffff !important;
-}
+/* アイコン色（テーブル外） */
+.icon-blue { color: #2b3e6f !important; }
