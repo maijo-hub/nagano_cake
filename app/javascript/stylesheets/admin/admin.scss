@@ -155,3 +155,35 @@ body.admin-background {
 
 /* アイコン色（テーブル外） */
 .icon-blue { color: #2b3e6f !important; }
+
+/* 商品詳細ページ専用レイアウト */
+.admin-show-container .admin-item-image-box {
+  border: 2px solid #dce6ff;
+}
+
+/* th と td の専用調整（見やすさアップ） */
+.admin-th {
+  width: 25%;
+  background-color: #eef3ff;
+  color: #1c2a4a;
+  font-weight: 600;
+}
+
+.admin-td {
+  background-color: #ffffff;
+  color: #1c2a4a;
+}
+
+/* 編集ボタン（管理者カラー） */
+.admin-edit-btn {
+  background-color: #5b8def;
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: 0.2s;
+}
+
+.admin-edit-btn:hover {
+  background-color: #3d6fe0;
+  color: #ffffff;
+}
