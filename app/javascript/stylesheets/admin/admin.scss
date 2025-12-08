@@ -237,3 +237,36 @@ body.admin-background table {
   display: block;
   margin: 0 auto;
 }
+
+/* -------------------------------------------------
+   編集画面（edit）専用デザイン
+   ------------------------------------------------- */
+
+/* 右側の白いカードを show と統一 */
+.admin-edit-card {
+  background-color: #ffffff;
+  border: 2px solid #dce6ff;
+}
+
+/* フォームのラベルを show と同じカラーに */
+.admin-form-label {
+  font-weight: 600;
+  color: #1c2a4a !important;
+}
+
+.admin-form-input {
+  border-color: #b6c4e6 !important;
+  color: #1c2a4a !important;
+}
+
+.admin-form-input:focus {
+  border-color: #5b8def !important;
+}
+
+
+/* 画像ボックス（show と同じ） */
+.admin-item-image-box {
+  border: 2px solid #dce6ff;
+  border-radius: 10px;
+  background: #ffffff;
+}
