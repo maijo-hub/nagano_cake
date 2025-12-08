@@ -6,15 +6,16 @@
       <!-- 左側：画像 -->
       <div class="col-md-5 text-center">
         <% if @item.image.attached? %>
-          <%= image_tag @item.image.variant(resize_to_limit: [300, 300]), class: "img-fluid rounded shadow-sm" %>
+          <%= image_tag @item.image, class: "admin-item-image img-fluid rounded shadow-sm" %>
         <% else %>
-          <%= image_tag "no_image.jpg", size: "300x300", class: "img-fluid rounded shadow-sm" %>
+          <%= image_tag "no_image.jpg", size: "300x300", class: "admin-item-image img-fluid rounded shadow-sm" %>
         <% end %>
       </div>
+    
 
       <!-- 右側：詳細情報 -->
       <div class="col-md-7">
-        <table class="table table-borderless">
+        <table class="table table-borderless admin-show-table">
           <tr>
             <th>商品名</th>
             <td><%= @item.name %></td>

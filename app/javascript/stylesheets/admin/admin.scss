@@ -212,3 +212,28 @@ body.admin-background table {
     background-color: #edf3ff;
   }
 }
+
+/* --- 商品詳細ページ専用デザイン（最後に追加） --- */
+.admin-show-table {
+  th {
+    background-color: #eef3ff !important; /* 淡い青 */
+    color: #1c2a4a !important;           /* 濃い青（可読性） */
+    font-weight: 600;
+    text-align: left !important;
+    width: 30%;
+  }
+
+  td {
+    background-color: #ffffff;
+    color: #1c2a4a !important;
+    font-weight: 500;
+    text-align: left !important;
+  }
+}
+
+.admin-item-image {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
