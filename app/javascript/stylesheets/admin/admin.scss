@@ -187,3 +187,28 @@ body.admin-background {
   background-color: #3d6fe0;
   color: #ffffff;
 }
+
+/* --- 管理画面のすべての table を統一デザインにする（table-borderless も含む） --- */
+body.admin-background table {
+  background-color: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+
+  th {
+    background-color: #5b8def !important;
+    color: #ffffff !important;
+    font-weight: 600;
+    text-align: left; /* ← show のタイトルが黒くなる原因だったので指定 */
+  }
+
+  td {
+    color: #1c2a4a !important;
+    font-weight: 500;
+    text-align: center;
+  }
+
+  tr:hover {
+    background-color: #edf3ff;
+  }
+}
