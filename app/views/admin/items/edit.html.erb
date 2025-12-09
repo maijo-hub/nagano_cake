@@ -1,33 +1,35 @@
+<!-- app/views/admin/items/edit.html.erb -->
 <div class="admin-content">
   <div class="container mt-5 admin-edit-container">
-    <h2 class="mb-4">商品編集</h2>
+    <h2 class="mb-4 admin-title"><i class="fa-solid fa-cake-candles icon-blue me-2"></i> 商品編集</h2>
 
     <%= form_with model: @item, url: admin_item_path(@item), method: :patch, local: true do |f| %>
-      <div class="row">
+      <div class="row g-4">
 
-        <!-- 左側：商品画像 -->
-        <div class="col-md-5 mb-4 text-center">
+        <!-- 左：画像（モバイルでは上に表示） -->
+        <div class="col-12 col-md-5 order-1 order-md-1 text-center">
           <div class="admin-item-image-box p-3">
             <% if @item.image.attached? %>
-              <%= image_tag @item.image, class: "admin-item-image img-fluid rounded shadow-sm" %>
+              <%= image_tag @item.image, class: "admin-item-image img-fluid rounded shadow-sm", alt: @item.name %>
             <% else %>
               <%= image_tag "no_image.jpg", size: "300x300", class: "admin-item-image img-fluid rounded shadow-sm" %>
             <% end %>
           </div>
 
           <div class="mt-3">
-            <%= f.label :image, "商品画像を変更", class: "form-label fw-bold" %><br>
-            <%= f.file_field :image, class: "form-control" %>
+            <%= f.label :image, "商品画像を変更", class: "form-label admin-form-label" %><br>
+            <%= f.file_field :image, class: "form-control admin-form-input" %>
           </div>
         </div>
 
+        <!-- 右：フォーム -->
         <!-- 右側：商品情報 -->
         <div class="col-md-7">
-          <div class="admin-edit-card p-4 rounded shadow-sm">
+          <div class="admin-card p-4 rounded shadow-sm">
 
             <div class="mb-3">
               <%= f.label :name, "商品名", class: "admin-form-label" %>
-              <%= f.text_field :name, class: "form-control admin-form-input" %>
+              <%= f.text_field :name, class: "form-control admin-form-input", required: true %>
             </div>
 
             <div class="mb-3">
@@ -38,6 +40,7 @@
             <div class="mb-3">
               <%= f.label :price, "税抜価格", class: "admin-form-label" %>
               <div class="input-group admin-form-input">
+                <span class="input-group-text">¥</span>
                 <%= f.number_field :price, class: "form-control", min: 0 %>
                 <span class="input-group-text">円</span>
               </div>
@@ -47,24 +50,20 @@
               <%= f.label :is_active, "販売ステータス", class: "admin-form-label" %><br>
 
               <div class="form-check form-check-inline">
-                <%= f.radio_button :is_active, true, class: "form-check-input" %>
-                <label class="form-check-label">販売中</label>
+                <%= f.radio_button :is_active, true, class: "form-check-input", id: "is_active_true" %>
+                <%= f.label :is_active_true, "販売中", class: "form-check-label" %>
               </div>
 
               <div class="form-check form-check-inline">
-                <%= f.radio_button :is_active, false, class: "form-check-input" %>
-                <label class="form-check-label">販売停止中</label>
-              </div>
-            </div>
-
-            <div class="text-end">
-              <%= f.submit "変更を保存", class: "btn admin-edit-btn px-4" %>
-            </div>
-
+                <%= f.radio_button :is_active, false, class: "form-check-input", id: "is_active_false" %>
+                <%= f.label :is_active_false, "販売停止中", class: "form-check-label" %>
           </div>
         </div>
 
-      </div>
+        <div class="text-end">
+          <%= f.submit "変更を保存", class: "btn admin-edit-btn px-4" %>
+        </div>
     <% end %>
   </div>
 </div>
+

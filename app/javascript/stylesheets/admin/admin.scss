@@ -270,3 +270,79 @@ body.admin-background table {
   border-radius: 10px;
   background: #ffffff;
 }
+
+/* ===== admin edit page & shared admin styles ===== */
+body.admin-background {
+  /* 背景や本文色は既存で定義済みなら不要 */
+}
+
+/* 画像ボックス */
+.admin-item-image-box {
+  border: 2px solid #dce6ff;
+  border-radius: 10px;
+  background: #ffffff;
+  padding: 14px;
+}
+
+/* 画像自体の最大幅 */
+.admin-item-image {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
+/* 編集用カード（右側） */
+.admin-edit-card {
+  background-color: #ffffff;
+  border: 1px solid #e6eefc;
+  border-radius: 10px;
+}
+
+/* フォームラベル・入力の統一 */
+.admin-form-label {
+  font-weight: 600;
+  color: #1c2a4a;
+}
+
+.admin-form-input {
+  border-color: #d0d9ee !important;
+  box-shadow: none !important;
+}
+
+/* フォーカス時の境界 */
+.admin-form-input:focus {
+  border-color: #5b8def !important;
+  box-shadow: 0 0 0 0.12rem rgba(91,141,239,0.12) !important;
+}
+
+/* ボタン（管理色） */
+.admin-edit-btn, .btn-admin {
+  background-color: #5b8def;
+  color: #fff !important;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.admin-edit-btn:hover, .btn-admin:hover {
+  background-color: #3d6fe0;
+  color: #fff !important;
+}
+
+/* 幅の調整（モバイルで重なり防止） */
+@media (max-width: 767.98px) {
+  .admin-item-image-box {
+    margin-bottom: 1rem;
+  }
+  .admin-edit-card {
+    padding: 1rem !important;
+  }
+}
+
+/* テーブル等の既存 admin スタイルと合うように軽く整える */
+.admin-content h2.admin-title {
+  color: #2b3e6f;
+  font-weight: 700;
+}
+
