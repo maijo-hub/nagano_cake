@@ -271,10 +271,7 @@ body.admin-background table {
   background: #ffffff;
 }
 
-/* ===== admin edit page & shared admin styles ===== */
-body.admin-background {
-  /* 背景や本文色は既存で定義済みなら不要 */
-}
+/* admin-background は layouts 内で既に定義済み */
 
 /* 画像ボックス */
 .admin-item-image-box {
@@ -346,3 +343,21 @@ body.admin-background {
   font-weight: 700;
 }
 
+/* =========================================================
+   customers（会員一覧）専用調整
+   admin-table の left 上書きを抑えて中央に揃える
+   ========================================================= */
+   .customer-table thead th {
+    text-align: center !important;
+  }
+  
+  .customer-table tbody td {
+    text-align: center !important;
+  }
+  
+  /* 氏名のリンクも中央に収まるよう補正 */
+  .customer-table tbody td a {
+    justify-content: center !important;
+    text-align: center !important;
+  }
+  
