@@ -424,3 +424,149 @@ body.admin-background table {
   background-color: #f9f9f9;
   transition: 0.2s ease-in-out;
 }
+
+/* ============================
+   Admin 全体レイアウト
+============================ */
+body.admin-background {
+  background: #f4f8fb;
+  font-size: 0.95rem;
+  color: #2c3e50;
+}
+
+/* ============================
+   タイトル見出し（青系）
+============================ */
+.admin-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #1565c0;
+  border-left: 6px solid #1e88e5;
+  padding-left: 12px;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.admin-title i {
+  margin-right: 8px;
+  color: #1e88e5;
+}
+
+/* ============================
+   テーブル
+============================ */
+.admin-table {
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.admin-table th {
+  background: #e3f2fd;
+  color: #1565c0;
+  width: 25%;
+  padding: 1rem;
+  font-weight: 600;
+}
+
+.admin-table td {
+  padding: 1rem;
+  color: #2c3e50;
+}
+
+.admin-table tbody tr:hover {
+  background: #f1f8ff;
+  transition: 0.2s;
+}
+
+/* ============================
+   インプット
+============================ */
+.admin-input {
+  border-radius: 6px;
+  border: 1px solid #bbdefb;
+  padding: 0.45rem 0.6rem;
+}
+
+.admin-input:focus {
+  border-color: #42a5f5;
+  box-shadow: 0 0 0 0.2rem rgba(66, 165, 245, 0.3);
+}
+
+/* ============================
+   ボタン
+============================ */
+.btn-admin {
+  background: #1e88e5;
+  color: #fff;
+  padding: 0.6rem 1.4rem;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: 0.2s;
+  border: none;
+}
+
+.btn-admin:hover {
+  background: #1565c0;
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+/* ===============================
+   会員ステータス選択（有効 / 退会）
+   =============================== */
+
+/* ラジオボタンは非表示 */
+.status-radio {
+  display: none;
+}
+
+/* 共通デザイン */
+.status-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-right: 10px;
+  color: #fff;
+  transition: transform .15s, box-shadow .15s;
+}
+
+/* 有効 */
+.status-active-btn {
+  background-color: #43a047;
+}
+.status-radio:checked + .status-active-btn {
+  box-shadow: 0 0 0 3px rgba(67,160,71,0.4);
+  transform: translateY(-2px);
+}
+
+/* 退会 */
+.status-inactive-btn {
+  background-color: #9aa3b5;
+}
+.status-radio:checked + .status-inactive-btn {
+  box-shadow: 0 0 0 3px rgba(154,163,181,0.4);
+  transform: translateY(-2px);
+}
+
+/* ===============================
+   変更を保存ボタン
+   =============================== */
+   .btn-save {
+    background-color: #ffb74d;
+    color: #fff !important;
+    font-weight: 700;
+    border-radius: 8px;
+    padding: 10px 24px;
+    border: none;
+    transition: .2s;
+  }
+  
+  .btn-save:hover {
+    background-color: #ffa726;
+    transform: translateY(-1px);
+  }
+  
