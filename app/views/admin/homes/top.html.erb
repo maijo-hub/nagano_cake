@@ -17,31 +17,25 @@
     <tbody>
       <% @orders.each do |order| %>
         <tr>
-          <!-- 注文詳細へのリンク（admin_order_path が存在する想定） -->
+          <!-- 注文詳細へのリンク -->
           <td>
             <%= link_to order.created_at.strftime("%Y-%m-%d %H:%M"),
-                        (defined?(admin_order_path) ? admin_order_path(order) : "#"),
+                        admin_order_path(order),
                         class: "link-blue text-decoration-none" %>
           </td>
 
+          <!-- 顧客名 -->
           <td><%= order.customer&.full_name || "—" %></td>
 
-          <!-- 注文個数：安全に取得（order_details または代替 assoc の有無で分岐） -->
+          <!-- 注文個数：Order モデル内で items JSON を使う前提 -->
           <td>
-            <% qty = nil %>
-            <% if order.respond_to?(:order_details) %>
-              <%# order_details があれば合計を使う %>
-              <% qty = order.order_details.sum(:amount) rescue nil %>
-            <% elsif order.respond_to?(:order_items) %>
-              <%# 別名の関連がある場合のフォールバック %>
-              <% qty = order.order_items.sum(:quantity) rescue nil %>
-            <% elsif order.respond_to?(:total_quantity) %>
-              <%# メソッドで合計を保持している場合のフォールバック %>
-              <% qty = order.total_quantity rescue nil %>
+            <% if order.respond_to?(:items) && order.items.present? %>
+              <%= order.items.sum { |i| i["amount"].to_i } %>
+            <% else %>
+              -
             <% end %>
-
-            <%= qty.present? ? qty : "-" %>
           </td>
+
         </tr>
       <% end %>
     </tbody>
@@ -50,4 +44,5 @@
   <div class="d-flex justify-content-center mt-4">
     <%= paginate @orders %>
   </div>
+
 </div>

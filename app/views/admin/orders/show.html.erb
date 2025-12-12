@@ -13,7 +13,7 @@
     </div>
   </div>
 
-  <!-- 商品明細 -->
+  <!-- 商品明細（CartItemベース） -->
   <div class="card shadow-sm border-0 rounded-3">
     <div class="card-body">
       <table class="table table-hover align-middle text-center mb-0">
@@ -26,12 +26,12 @@
           </tr>
         </thead>
         <tbody>
-          <% @order_details.each do |detail| %>
+          <% @cart_items.each do |ci| %>
             <tr>
-              <td><%= detail.item.name %></td>
-              <td><%= number_to_currency(detail.price, unit: "¥", format: "%u%n", precision: 0) %></td>
-              <td><%= detail.amount %></td>
-              <td><%= number_to_currency(detail.price * detail.amount, unit: "¥", format: "%u%n", precision: 0) %></td>
+              <td><%= ci.item.name %></td>
+              <td><%= number_to_currency(ci.item.price, unit: "¥", format: "%u%n", precision: 0) %></td>
+              <td><%= ci.amount %></td>
+              <td><%= number_to_currency(ci.item.price * ci.amount, unit: "¥", format: "%u%n", precision: 0) %></td>
             </tr>
           <% end %>
         </tbody>
