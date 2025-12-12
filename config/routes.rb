@@ -18,7 +18,6 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :orders, only: [:index, :show, :update]            # 注文ステータス更新
-    resources :order_details, only: [:show, :update] # 製作ステータス更新
   end
 
   # 顧客用 Public namespace
