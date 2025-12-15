@@ -17,28 +17,20 @@
     <tbody>
       <% @orders.each do |order| %>
         <tr>
-          <!-- 注文詳細へのリンク -->
           <td>
             <%= link_to order.created_at.strftime("%Y-%m-%d %H:%M"),
                         admin_order_path(order),
                         class: "link-blue text-decoration-none" %>
           </td>
-
-          <!-- 顧客名 -->
-          <td><%= order.customer&.full_name || "—" %></td>
-
-          <!-- 注文個数：Order モデル内で items JSON を使う前提 -->
-          <td>
-            <% if order.respond_to?(:items) && order.items.present? %>
-              <%= order.items.sum { |i| i["amount"].to_i } %>
-            <% else %>
-              -
-            <% end %>
-          </td>
-
+    
+          <td><%= order.customer.full_name %></td>
+    
+          <!-- 注文個数 -->
+          <td><%= order.total_quantity %></td>
         </tr>
       <% end %>
     </tbody>
+  
   </table>
 
   <div class="d-flex justify-content-center mt-4">
