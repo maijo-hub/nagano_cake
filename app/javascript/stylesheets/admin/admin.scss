@@ -1,442 +1,68 @@
-// admin.scss — 管理画面専用スタイル（ライト青ベース、ヘッダーにのみ白文字）
-// コピーして上書きしてください（既存の admin.scss は丸ごと置換）
+// =======================================================
+// admin.scss — 管理画面専用スタイル（最終完成版）
+// =======================================================
 
 @import "~bootstrap/scss/bootstrap";
 
-/* ---------------------------------------------
-   全体（body が管理画面モードのときに最低限）
-   --------------------------------------------- */
+/* =======================================================
+   1. 全体レイアウト（管理画面の起点）
+======================================================= */
 body.admin-background {
-  background-color: #f3f6ff;
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-}
-
-/* ---------------------------------------------
-   HEADER（**限定的に** .admin-header にだけ適用）
-   - layouts/_admin_header.html.erb の header 要素に class="admin-header" がある前提
-   --------------------------------------------- */
-.admin-header {
-  background-color: #5b8def;
-  border-bottom: 3px solid #004b8d;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.08);
-
-  .navbar-brand {
-    color: #ffffff !important;
-    font-weight: 700;
-    i.logo-icon { color: #ffd166; } /* ロゴの差し色 */
-    &:hover { color: #e8efff !important; }
-  }
-
-  /* ヘッダーメニュー用のボタン風リンク（視認性高く） */
-  a.admin-nav-btn {
-    color: #ffffff !important;
-    background: transparent;
-    padding: 8px 14px;
-    border-radius: 8px;
-    font-weight: 600;
-    transition: background-color .15s ease;
-
-    &:hover {
-      background-color: rgba(255,255,255,0.12);
-      color: #ffffff !important;
-    }
-  }
-
-  /* ログアウトだけ赤く強調 */
-  a.admin-logout-btn {
-    background-color: #d9534f !important;
-    color: #ffffff !important;
-    padding: 8px 14px;
-    border-radius: 8px;
-    font-weight: 600;
-
-    &:hover { background-color: #c9302c !important; }
-  }
-}
-
-/* ---------------------------------------------
-   テーブル共通（admin 用のテーブルは .admin-table / .item-list-table を使う想定）
-   ヘッダーは白、データは濃い青（可読性重視）
-   --------------------------------------------- */
-.admin-table,
-.item-list-table {
-  width: 100%;
-  background: #ffffff;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-  border-collapse: collapse;
-}
-
-/* ヘッダー（中央揃え） */
-.admin-table thead th,
-.item-list-table thead th {
-  background-color: #5b8def !important;
-  color: #ffffff !important;
-  font-weight: 700;
-  text-align: center;
-  padding: 0.8rem;
-}
-
-/* データ行（基本は濃い色で可読性） */
-.admin-table tbody td,
-.item-list-table tbody td {
-  color: #1c2a4a;     /* 濃い青で可読性確保 */
-  font-weight: 500;
-  padding: 0.7rem;
-  vertical-align: middle;
-  text-align: center; /* デフォルト中央。列別に下で上書き */
-}
-
-/* 商品一覧：列ごとの揃え（1: id center / 2: name left / 3: price right） */
-.item-list-table thead th:nth-child(1),
-.item-list-table tbody td:nth-child(1) { text-align: center; width: 10%; }
-
-.item-list-table thead th:nth-child(2),
-.item-list-table tbody td:nth-child(2) {
-  text-align: left;
-  width: auto;
-  max-width: 520px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  padding-left: 1rem;
-}
-
-.item-list-table thead th:nth-child(3),
-.item-list-table tbody td:nth-child(3) { text-align: right; width: 15%; white-space: nowrap; }
-
-/* 注文履歴テーブルの列整列例（ヘッダーは中央、データは列用途に合わせる） */
-.admin-table.order-table thead th { text-align: center; }
-.admin-table.order-table tbody td:nth-child(1) { text-align: center; } /* 日時 */
-.admin-table.order-table tbody td:nth-child(2) { text-align: left; padding-left: 1rem; } /* 購入者 */
-.admin-table.order-table tbody td:nth-child(3) { text-align: center; } /* 個数 */
-
-/* テーブル内リンクは**必ず**データ色を継承させる（白くなるのを防ぐ） */
-.admin-table tbody a,
-.item-list-table tbody a {
-  color: inherit !important;
-  text-decoration: none;
-}
-
-/* テーブル内アイコン（例：★）は差し色に */
-.item-list-table tbody i,
-.admin-table tbody i {
-  color: #f7b500;
-}
-
-/* 行ホバー */
-.admin-table tbody tr:hover,
-.item-list-table tbody tr:hover {
-  background-color: #edf3ff;
-}
-
-/* ページネーション */
-.pagination .page-link {
-  background-color: #5b8def;
-  color: #fff;
-  border-radius: 6px;
-}
-
-/* 汎用リンク（ページ内リンク）は青系（但し header の白とは別扱い） */
-.admin-content a { color: #3d6fe0; } /* .admin-content をページ wrapper に付けるとより安心 */
-
-/* 会員ステータスバッジ */
-.status-badge {
-  display: inline-flex;
-  align-items: center;
-  padding: 6px 14px;
-  border-radius: 12px;
-  font-weight: bold;
-  color: #fff;
-}
-.status-badge.active { background-color: #3ca860; }
-.status-badge.inactive { background-color: #9aa3b5; }
-
-/* アイコン色（テーブル外） */
-.icon-blue { color: #2b3e6f !important; }
-
-/* 商品詳細ページ専用レイアウト */
-.admin-show-container .admin-item-image-box {
-  border: 2px solid #dce6ff;
-}
-
-/* th と td の専用調整（見やすさアップ） */
-.admin-th {
-  width: 25%;
-  background-color: #eef3ff;
-  color: #1c2a4a;
-  font-weight: 600;
-}
-
-.admin-td {
-  background-color: #ffffff;
-  color: #1c2a4a;
-}
-
-/* 編集ボタン（管理者カラー） */
-.admin-edit-btn {
-  background-color: #5b8def;
-  color: #ffffff;
-  font-weight: 600;
-  border-radius: 8px;
-  transition: 0.2s;
-}
-
-.admin-edit-btn:hover {
-  background-color: #3d6fe0;
-  color: #ffffff;
-}
-
-/* --- 管理画面のすべての table を統一デザインにする（table-borderless も含む） --- */
-body.admin-background table {
-  background-color: #ffffff;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-
-  th {
-    background-color: #5b8def !important;
-    color: #ffffff !important;
-    font-weight: 600;
-    text-align: left; /* ← show のタイトルが黒くなる原因だったので指定 */
-  }
-
-  td {
-    color: #1c2a4a !important;
-    font-weight: 500;
-    text-align: center;
-  }
-
-  tr:hover {
-    background-color: #edf3ff;
-  }
-}
-
-/* --- 商品詳細ページ専用デザイン（最後に追加） --- */
-.admin-show-table {
-  th {
-    background-color: #eef3ff !important; /* 淡い青 */
-    color: #1c2a4a !important;           /* 濃い青（可読性） */
-    font-weight: 600;
-    text-align: left !important;
-    width: 30%;
-  }
-
-  td {
-    background-color: #ffffff;
-    color: #1c2a4a !important;
-    font-weight: 500;
-    text-align: left !important;
-  }
-}
-
-.admin-item-image {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-}
-
-/* -------------------------------------------------
-   編集画面（edit）専用デザイン
-   ------------------------------------------------- */
-
-/* 右側の白いカードを show と統一 */
-.admin-edit-card {
-  background-color: #ffffff;
-  border: 2px solid #dce6ff;
-}
-
-/* フォームのラベルを show と同じカラーに */
-.admin-form-label {
-  font-weight: 600;
-  color: #1c2a4a !important;
-}
-
-.admin-form-input {
-  border-color: #b6c4e6 !important;
-  color: #1c2a4a !important;
-}
-
-.admin-form-input:focus {
-  border-color: #5b8def !important;
-}
-
-
-/* 画像ボックス（show と同じ） */
-.admin-item-image-box {
-  border: 2px solid #dce6ff;
-  border-radius: 10px;
-  background: #ffffff;
-}
-
-/* admin-background は layouts 内で既に定義済み */
-
-/* 画像ボックス */
-.admin-item-image-box {
-  border: 2px solid #dce6ff;
-  border-radius: 10px;
-  background: #ffffff;
-  padding: 14px;
-}
-
-/* 画像自体の最大幅 */
-.admin-item-image {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-  object-fit: contain;
-}
-
-/* 編集用カード（右側） */
-.admin-edit-card {
-  background-color: #ffffff;
-  border: 1px solid #e6eefc;
-  border-radius: 10px;
-}
-
-/* フォームラベル・入力の統一 */
-.admin-form-label {
-  font-weight: 600;
-  color: #1c2a4a;
-}
-
-.admin-form-input {
-  border-color: #d0d9ee !important;
-  box-shadow: none !important;
-}
-
-/* フォーカス時の境界 */
-.admin-form-input:focus {
-  border-color: #5b8def !important;
-  box-shadow: 0 0 0 0.12rem rgba(91,141,239,0.12) !important;
-}
-
-/* ボタン（管理色） */
-.admin-edit-btn, .btn-admin {
-  background-color: #5b8def;
-  color: #fff !important;
-  border-radius: 8px;
-  font-weight: 600;
-}
-
-.admin-edit-btn:hover, .btn-admin:hover {
-  background-color: #3d6fe0;
-  color: #fff !important;
-}
-
-/* 幅の調整（モバイルで重なり防止） */
-@media (max-width: 767.98px) {
-  .admin-item-image-box {
-    margin-bottom: 1rem;
-  }
-  .admin-edit-card {
-    padding: 1rem !important;
-  }
-}
-
-/* テーブル等の既存 admin スタイルと合うように軽く整える */
-.admin-content h2.admin-title {
-  color: #2b3e6f;
-  font-weight: 700;
-}
-
-/* =========================================================
-   customers（会員一覧）専用調整
-   admin-table の left 上書きを抑えて中央に揃える
-   ========================================================= */
-   .customer-table thead th {
-    text-align: center !important;
-  }
-  
-  .customer-table tbody td {
-    text-align: center !important;
-  }
-  
-  /* 氏名のリンクも中央に収まるよう補正 */
-  .customer-table tbody td a {
-    justify-content: center !important;
-    text-align: center !important;
-  }
-  
-  /* ===== admin 共通タイトル ===== */
-.admin-title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #333;
-}
-
-/* ===== admin 共通テーブル ===== */
-.admin-table th {
-  background: #f5f5f5;
-  color: #444;
-  width: 25%;
-  padding: 0.75rem;
-}
-
-.admin-table td {
-  color: #333;
-  padding: 0.75rem;
-}
-
-/* ===== admin 共通バッジ ===== */
-.status-active {
-  background: #4caf50;
-  color: white;
-  padding: 0.3rem 0.75rem;
-  border-radius: 6px;
-}
-
-.status-inactive {
-  background: #9e9e9e;
-  color: white;
-  padding: 0.3rem 0.75rem;
-  border-radius: 6px;
-}
-
-/* ===== admin ボタンの統一 ===== */
-.btn-main {
-  background: #007bff;
-  color: white;
-  border-radius: 6px;
-  padding: 0.5rem 1rem;
-}
-
-.btn-main:hover {
-  background: #0069d9;
-}
-
-.btn-sub {
-  border: 1px solid #007bff;
-  color: #007bff;
-  border-radius: 6px;
-  padding: 0.5rem 1rem;
-}
-
-.btn-sub:hover {
-  background: #007bff;
-  color: white;
-}
-
-.table-hover tbody tr:hover {
-  background-color: #f9f9f9;
-  transition: 0.2s ease-in-out;
-}
-
-/* ============================
-   Admin 全体レイアウト
-============================ */
-body.admin-background {
-  background: #f4f8fb;
+  background-color: #f4f8fb;
+  font-family: "Helvetica Neue", Arial, sans-serif;
   font-size: 0.95rem;
   color: #2c3e50;
 }
 
-/* ============================
-   タイトル見出し（青系）
-============================ */
+/* =======================================================
+   2. HEADER（管理画面専用）
+======================================================= */
+.admin-header {
+  background-color: #5b8def;
+  border-bottom: 3px solid #004b8d;
+  box-shadow: 0 2px 6px rgba(0,0,0,.08);
+
+  .navbar-brand {
+    color: #fff !important;
+    font-weight: 700;
+
+    i.logo-icon {
+      color: #ffd166;
+    }
+
+    &:hover {
+      color: #e8efff !important;
+    }
+  }
+
+  a.admin-nav-btn {
+    color: #fff !important;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background-color .15s;
+
+    &:hover {
+      background-color: rgba(255,255,255,.15);
+    }
+  }
+
+  a.admin-logout-btn {
+    background-color: #d9534f;
+    color: #fff !important;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-weight: 600;
+
+    &:hover {
+      background-color: #c9302c;
+    }
+  }
+}
+
+/* =======================================================
+   3. ページタイトル
+======================================================= */
 .admin-title {
   font-size: 1.6rem;
   font-weight: 700;
@@ -446,127 +72,168 @@ body.admin-background {
   margin-bottom: 1.5rem;
   display: flex;
   align-items: center;
+
+  i {
+    margin-right: 8px;
+    color: #1e88e5;
+  }
 }
 
-.admin-title i {
-  margin-right: 8px;
-  color: #1e88e5;
+/* =======================================================
+   4. カード（詳細・編集画面）
+======================================================= */
+.admin-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  border: 1px solid #dce6ff;
+  box-shadow: 0 2px 8px rgba(0,0,0,.04);
 }
 
-/* ============================
-   テーブル
-============================ */
+/* =======================================================
+   5. テーブル（管理画面共通）
+======================================================= */
 .admin-table {
-  background: #fff;
+  width: 100%;
+  background: #ffffff;
   border-radius: 10px;
   overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,.05);
+  border-collapse: collapse;
+
+  thead th {
+    background-color: #5b8def;
+    color: #ffffff;
+    font-weight: 700;
+    text-align: center;
+    padding: 0.9rem;
+  }
+
+  tbody td {
+    color: #1c2a4a;
+    font-weight: 500;
+    padding: 0.75rem;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  tbody tr:hover {
+    background-color: #edf3ff;
+  }
+
+  tbody a {
+    color: inherit !important;
+    text-decoration: none;
+  }
 }
 
-.admin-table th {
-  background: #e3f2fd;
-  color: #1565c0;
-  width: 25%;
-  padding: 1rem;
+/* 注文履歴一覧用の列調整 */
+.admin-table.order-table {
+  tbody td:nth-child(1) { text-align: center; } /* 日付 */
+  tbody td:nth-child(2) { text-align: left; padding-left: 1rem; } /* 購入者 */
+  tbody td:nth-child(3) { text-align: center; } /* 個数 */
+}
+
+/* =======================================================
+   6. 詳細ページ用テーブル（show）
+======================================================= */
+.admin-show-table {
+  th {
+    width: 30%;
+    background-color: #eef3ff;
+    color: #1c2a4a;
+    font-weight: 600;
+    text-align: left;
+    padding: 1rem;
+  }
+
+  td {
+    background-color: #ffffff;
+    color: #1c2a4a;
+    text-align: left;
+    padding: 1rem;
+  }
+}
+
+/* =======================================================
+   7. フォーム
+======================================================= */
+.admin-form-label {
   font-weight: 600;
+  color: #1c2a4a;
 }
 
-.admin-table td {
-  padding: 1rem;
-  color: #2c3e50;
-}
-
-.admin-table tbody tr:hover {
-  background: #f1f8ff;
-  transition: 0.2s;
-}
-
-/* ============================
-   インプット
-============================ */
-.admin-input {
+.admin-form-input {
+  border: 1px solid #d0d9ee;
   border-radius: 6px;
-  border: 1px solid #bbdefb;
-  padding: 0.45rem 0.6rem;
+  color: #1c2a4a;
+
+  &:focus {
+    border-color: #5b8def;
+    box-shadow: 0 0 0 0.15rem rgba(91,141,239,.25);
+  }
 }
 
-.admin-input:focus {
-  border-color: #42a5f5;
-  box-shadow: 0 0 0 0.2rem rgba(66, 165, 245, 0.3);
-}
-
-/* ============================
-   ボタン
-============================ */
-.btn-admin {
-  background: #1e88e5;
-  color: #fff;
-  padding: 0.6rem 1.4rem;
-  border-radius: 6px;
-  font-weight: 600;
-  transition: 0.2s;
-  border: none;
-}
-
-.btn-admin:hover {
-  background: #1565c0;
-  color: #fff;
-  transform: translateY(-1px);
-}
-
-/* ===============================
-   会員ステータス選択（有効 / 退会）
-   =============================== */
-
-/* ラジオボタンは非表示 */
-.status-radio {
-  display: none;
-}
-
-/* 共通デザイン */
-.status-btn {
-  display: inline-block;
-  padding: 10px 20px;
+/* =======================================================
+   8. ボタン
+======================================================= */
+.btn-admin,
+.admin-edit-btn {
+  background-color: #5b8def;
+  color: #fff !important;
   border-radius: 8px;
   font-weight: 600;
-  cursor: pointer;
-  margin-right: 10px;
-  color: #fff;
-  transition: transform .15s, box-shadow .15s;
-}
+  border: none;
+  padding: 0.6rem 1.4rem;
+  transition: .2s;
 
-/* 有効 */
-.status-active-btn {
-  background-color: #43a047;
-}
-.status-radio:checked + .status-active-btn {
-  box-shadow: 0 0 0 3px rgba(67,160,71,0.4);
-  transform: translateY(-2px);
-}
-
-/* 退会 */
-.status-inactive-btn {
-  background-color: #9aa3b5;
-}
-.status-radio:checked + .status-inactive-btn {
-  box-shadow: 0 0 0 3px rgba(154,163,181,0.4);
-  transform: translateY(-2px);
-}
-
-/* ===============================
-   変更を保存ボタン
-   =============================== */
-   .btn-save {
-    background-color: #ffb74d;
-    color: #fff !important;
-    font-weight: 700;
-    border-radius: 8px;
-    padding: 10px 24px;
-    border: none;
-    transition: .2s;
-  }
-  
-  .btn-save:hover {
-    background-color: #ffa726;
+  &:hover {
+    background-color: #3d6fe0;
     transform: translateY(-1px);
   }
-  
+}
+
+/* 保存ボタン（強調） */
+.btn-save {
+  background-color: #ffb74d;
+  color: #fff !important;
+  font-weight: 700;
+  border-radius: 8px;
+  padding: 10px 24px;
+
+  &:hover {
+    background-color: #ffa726;
+  }
+}
+
+/* =======================================================
+   9. ステータスバッジ
+======================================================= */
+.status-badge {
+  padding: 6px 14px;
+  border-radius: 12px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.status-active { background-color: #43a047; }
+.status-inactive { background-color: #9aa3b5; }
+
+/* =======================================================
+   10. レスポンシブ調整
+======================================================= */
+@media (max-width: 768px) {
+  .admin-title {
+    font-size: 1.3rem;
+  }
+
+  .admin-table thead {
+    font-size: 0.85rem;
+  }
+}
+
+/* 管理画面用カード（ピンク上書き対策） */
+body.admin-background .admin-card {
+  background-color: #ffffff !important;
+  border: 1px solid #e6eefc;
+  border-radius: 10px;
+}
